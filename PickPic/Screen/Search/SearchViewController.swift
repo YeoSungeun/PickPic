@@ -6,7 +6,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchViewController: BaseViewController {
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
 }
+ 
