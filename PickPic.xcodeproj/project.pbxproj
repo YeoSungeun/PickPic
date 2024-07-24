@@ -25,11 +25,13 @@
 		A0D1EA802C4F67BD006C3CC6 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EA7F2C4F67BD006C3CC6 /* BaseCollectionViewCell.swift */; };
 		A0D1EA822C4F67D8006C3CC6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EA812C4F67D8006C3CC6 /* BaseView.swift */; };
 		A0D1EAA82C4FDEE3006C3CC6 /* PhotoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAA72C4FDEE3006C3CC6 /* PhotoRequest.swift */; };
-		A0D1EAAB2C4FECAC006C3CC6 /* mockdata.json in Resources */ = {isa = PBXBuildFile; fileRef = A0D1EAA92C4FECAC006C3CC6 /* mockdata.json */; };
 		A0D1EAAE2C4FF0D9006C3CC6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EAAD2C4FF0D9006C3CC6 /* SnapKit */; };
 		A0D1EAB12C4FF0E1006C3CC6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EAB02C4FF0E1006C3CC6 /* Kingfisher */; };
 		A0D1EAB42C4FF0EE006C3CC6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EAB32C4FF0EE006C3CC6 /* Alamofire */; };
 		A0D1EAB92C4FFCE9006C3CC6 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAB82C4FFCE9006C3CC6 /* SearchResult.swift */; };
+		A0D1EABC2C506C7E006C3CC6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EABB2C506C7E006C3CC6 /* Constant.swift */; };
+		A0D1EABF2C506CF6006C3CC6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EABE2C506CF6006C3CC6 /* UIColor+Extension.swift */; };
+		A0D1EAC12C506ECF006C3CC6 /* SearchSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAC02C506ECF006C3CC6 /* SearchSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +55,10 @@
 		A0D1EA7F2C4F67BD006C3CC6 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0D1EA812C4F67D8006C3CC6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		A0D1EAA72C4FDEE3006C3CC6 /* PhotoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRequest.swift; sourceTree = "<group>"; };
-		A0D1EAAA2C4FECAC006C3CC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/mockdata.json; sourceTree = "<group>"; };
 		A0D1EAB82C4FFCE9006C3CC6 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		A0D1EABB2C506C7E006C3CC6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A0D1EABE2C506CF6006C3CC6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A0D1EAC02C506ECF006C3CC6 /* SearchSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				A0D1EA7A2C4F66BF006C3CC6 /* Base */,
+				A0D1EABA2C506C57006C3CC6 /* Constant */,
+				A0D1EABD2C506CAF006C3CC6 /* Extension */,
 				A096BE302C4E74FF00F6026D /* Enum */,
 				A096BE2F2C4E742400F6026D /* Data */,
 				A096BE2C2C4E70A800F6026D /* DB */,
@@ -164,7 +170,6 @@
 			children = (
 				A096BE442C4F21B800F6026D /* Photo.swift */,
 				A0D1EAB82C4FFCE9006C3CC6 /* SearchResult.swift */,
-				A0D1EAA92C4FECAC006C3CC6 /* mockdata.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 		A096BE302C4E74FF00F6026D /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				A0D1EAC02C506ECF006C3CC6 /* SearchSort.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -225,6 +231,22 @@
 				A0D1EA812C4F67D8006C3CC6 /* BaseView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		A0D1EABA2C506C57006C3CC6 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				A0D1EABB2C506C7E006C3CC6 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		A0D1EABD2C506CAF006C3CC6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A0D1EABE2C506CF6006C3CC6 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +317,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0D1EAAB2C4FECAC006C3CC6 /* mockdata.json in Resources */,
 				A096BE262C4E4E5800F6026D /* .gitignore in Resources */,
 				A096BE1B2C4E4E4800F6026D /* Assets.xcassets in Resources */,
 				A096BE1E2C4E4E4800F6026D /* Base in Resources */,
@@ -310,7 +331,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A096BE412C4F10AD00F6026D /* NetworkManager.swift in Sources */,
+				A0D1EABC2C506C7E006C3CC6 /* Constant.swift in Sources */,
 				A0D1EAA82C4FDEE3006C3CC6 /* PhotoRequest.swift in Sources */,
+				A0D1EABF2C506CF6006C3CC6 /* UIColor+Extension.swift in Sources */,
 				A0D1EAB92C4FFCE9006C3CC6 /* SearchResult.swift in Sources */,
 				A0D1EA802C4F67BD006C3CC6 /* BaseCollectionViewCell.swift in Sources */,
 				A096BE362C4E9D8C00F6026D /* SearchViewController.swift in Sources */,
@@ -323,6 +346,7 @@
 				A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */,
 				A096BE392C4E9DA900F6026D /* LikeViewController.swift in Sources */,
 				A0D1EA822C4F67D8006C3CC6 /* BaseView.swift in Sources */,
+				A0D1EAC12C506ECF006C3CC6 /* SearchSort.swift in Sources */,
 				A0D1EA7E2C4F67A5006C3CC6 /* BaseTableViewCell.swift in Sources */,
 				A096BE3C2C4E9DCB00F6026D /* DetailViewController.swift in Sources */,
 			);
@@ -337,14 +361,6 @@
 				A096BE1D2C4E4E4800F6026D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		A0D1EAA92C4FECAC006C3CC6 /* mockdata.json */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0D1EAAA2C4FECAC006C3CC6 /* en */,
-			);
-			name = mockdata.json;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

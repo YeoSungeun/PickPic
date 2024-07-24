@@ -12,20 +12,19 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tabBar.tintColor = Color.mainColor
-//        tabBar.unselectedItemTintColor = Color.lightgray
+        tabBar.tintColor = Constant.Color.black
         
         let topic = TopicViewController()
         let nav1 = UINavigationController(rootViewController: topic)
-        nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "chart.xyaxis.line"), tag: 0)
+        nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "tap_trend_inactive"), selectedImage: UIImage(named: "tap_trend"))
         
         let search = SearchViewController()
         let nav2 = UINavigationController(rootViewController: search)
-        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "magnifyingglass"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "tab_search_inactive"), selectedImage: UIImage(named: "tab_search"))
         
         let like = LikeViewController()
         let nav3 = UINavigationController(rootViewController: like)
-        nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "heart"), tag: 2)
+        nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "tab_like_inactive"), selectedImage: UIImage(named: "tab_like"))
         
         setViewControllers([nav1, nav2, nav3], animated: true)
     }
