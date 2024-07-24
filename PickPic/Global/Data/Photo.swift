@@ -16,6 +16,10 @@ struct Photo: Decodable {
     let urls: ImageSize
     let likes: Int
     let user: User
+    
+    var likesString: String {
+        return likes.formatted()
+    }
 }
 
 struct ImageSize: Decodable  {

@@ -32,6 +32,9 @@
 		A0D1EABC2C506C7E006C3CC6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EABB2C506C7E006C3CC6 /* Constant.swift */; };
 		A0D1EABF2C506CF6006C3CC6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EABE2C506CF6006C3CC6 /* UIColor+Extension.swift */; };
 		A0D1EAC12C506ECF006C3CC6 /* SearchSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAC02C506ECF006C3CC6 /* SearchSort.swift */; };
+		A0D1EAE92C50E515006C3CC6 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAE82C50E515006C3CC6 /* SearchCollectionViewCell.swift */; };
+		A0D1EAEB2C50E7AA006C3CC6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAEA2C50E7AA006C3CC6 /* UIButton+Extension.swift */; };
+		A0D1EAED2C50EE3B006C3CC6 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAEC2C50EE3B006C3CC6 /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		A0D1EABB2C506C7E006C3CC6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A0D1EABE2C506CF6006C3CC6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A0D1EAC02C506ECF006C3CC6 /* SearchSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSort.swift; sourceTree = "<group>"; };
+		A0D1EAE82C50E515006C3CC6 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0D1EAEA2C50E7AA006C3CC6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		A0D1EAEC2C50EE3B006C3CC6 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +199,8 @@
 		A096BE342C4E9D7F00F6026D /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				A096BE352C4E9D8C00F6026D /* SearchViewController.swift */,
+				A0D1EAE42C50E256006C3CC6 /* View */,
+				A0D1EAE52C50E285006C3CC6 /* Cell */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -245,8 +252,26 @@
 			isa = PBXGroup;
 			children = (
 				A0D1EABE2C506CF6006C3CC6 /* UIColor+Extension.swift */,
+				A0D1EAEA2C50E7AA006C3CC6 /* UIButton+Extension.swift */,
+				A0D1EAEC2C50EE3B006C3CC6 /* Reusable.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		A0D1EAE42C50E256006C3CC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A096BE352C4E9D8C00F6026D /* SearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0D1EAE52C50E285006C3CC6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A0D1EAE82C50E515006C3CC6 /* SearchCollectionViewCell.swift */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,13 +367,16 @@
 				A0D1EA7C2C4F66CE006C3CC6 /* BaseViewController.swift in Sources */,
 				A096BE282C4E4F3D00F6026D /* APIKey.swift in Sources */,
 				A096BE322C4E9D7100F6026D /* TopicViewController.swift in Sources */,
+				A0D1EAED2C50EE3B006C3CC6 /* Reusable.swift in Sources */,
 				A096BE452C4F21B800F6026D /* Photo.swift in Sources */,
 				A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */,
+				A0D1EAE92C50E515006C3CC6 /* SearchCollectionViewCell.swift in Sources */,
 				A096BE392C4E9DA900F6026D /* LikeViewController.swift in Sources */,
 				A0D1EA822C4F67D8006C3CC6 /* BaseView.swift in Sources */,
 				A0D1EAC12C506ECF006C3CC6 /* SearchSort.swift in Sources */,
 				A0D1EA7E2C4F67A5006C3CC6 /* BaseTableViewCell.swift in Sources */,
 				A096BE3C2C4E9DCB00F6026D /* DetailViewController.swift in Sources */,
+				A0D1EAEB2C50E7AA006C3CC6 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

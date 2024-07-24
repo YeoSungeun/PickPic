@@ -16,6 +16,7 @@ enum Constant {
         static let gray = UIColor(rgb: 0x8C8C8C)
         static let lightGray = UIColor(rgb: 0xF2F2F2)
         static let white = UIColor(rgb: 0xFFFFFF)
+        static let yellow = UIColor(rgb: 0xFCCF03)
     }
     enum Font {
         static let bold16 = UIFont.boldSystemFont(ofSize: 16)
