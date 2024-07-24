@@ -17,8 +17,9 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     private let sortView = UIView()
-    private let sortButton = {
+    private lazy var sortButton = {
         let view = UIButton()
+        view.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
         return view
     }()
     private let startView = UIView()
@@ -40,22 +41,29 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
-    private var list: [Photo] = [] {
+    private var list: SearchResult = SearchResult(total: 0, total_pages: 0, results: []) {
         didSet {
-            if list.count == 0 {
+            if list.results.count == 0 {
                 startView.isHidden = true
+                sortButton.isHidden = true
                 resultView.isHidden = true
                 noResultView.isHidden = false
             } else {
                 startView.isHidden = true
+                sortButton.isHidden = false
                 resultView.isHidden = false
                 noResultView.isHidden = true
             }
         }
     }
+    private var query = ""
+    private var page = 1
+    private var sort = SearchSort.relevant
+    
+    private var repository = LikedItemRepository()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        repository.getFileURL()
     }
     override func configureHierarchy() {
         view.addSubview(searchBar)
@@ -81,7 +89,7 @@ final class SearchViewController: BaseViewController {
         sortButton.snp.makeConstraints { make in
             make.centerY.equalTo(sortView.snp.centerY)
             make.trailing.equalTo(sortView.snp.trailing).inset(8)
-            make.height.equalTo(40)
+            make.height.equalTo(36)
         }
         startView.snp.makeConstraints { make in
             make.top.equalTo(sortView.snp.bottom)
@@ -108,15 +116,17 @@ final class SearchViewController: BaseViewController {
     override func configureView() {
         super.configureView()
         navigationItem.title = "SEARCH PHOTO"
-        sortButton.configuration = .sortButtonStyle(title: SearchSort.latest.sortString)
+        sortButton.configuration = .sortButtonStyle(title: SearchSort.relevant.sortString)
         sortButton.layer.shadowColor = Constant.Color.gray.cgColor
         sortButton.layer.shadowOpacity = 0.5
         sortButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         sortButton.layer.masksToBounds = false
         resultCollectionView.delegate = self
         resultCollectionView.dataSource = self
+        resultCollectionView.prefetchDataSource = self
         resultCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
         startView.isHidden = false
+        sortButton.isHidden = true
         resultView.isHidden = true
         noResultView.isHidden = true
     }
@@ -130,8 +140,8 @@ final class SearchViewController: BaseViewController {
         
         return layout
     }
-    private func searchRequest(query: String) {
-        NetworkManager.shared.apiRequest(api: .search(query: query), model: SearchResult.self) { value, error in
+    private func searchRequest(query: String, sort: SearchSort) {
+        NetworkManager.shared.apiRequest(api: .search(query: query, page: page, sort: sort), model: SearchResult.self) { value, error in
             if let error = error {
                 print("error")
             }
@@ -139,20 +149,58 @@ final class SearchViewController: BaseViewController {
                 print("error nil, value nil")
                 return
             }
-            self.list = value.results
+            if self.page == 1 {
+                self.list = value
+            } else {
+                self.list.results.append(contentsOf: value.results)
+            }
             self.resultCollectionView.reloadData()
+            
+            if self.page == 1 {
+                guard value.total != 0 else { return }
+                self.resultCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+            }
         }
+    }
+    @objc private func sortButtonClicked(){
+        if let sort = sortButton.configuration?.title{
+            print(sort)
+            if sort == SearchSort.latest.sortString{
+                sortButton.configuration = .sortButtonStyle(title: SearchSort.relevant.sortString)
+                searchRequest(query: query, sort: .relevant)
+                self.sort = .relevant
+                self.page = 1
+            } else if sort == SearchSort.relevant.sortString {
+                sortButton.configuration = .sortButtonStyle(title: SearchSort.latest.sortString)
+                searchRequest(query: query, sort: .latest)
+                self.sort = .latest
+                self.page = 1
+            }
+        }
+    }
+    @objc private func likeButtonClicked(sender: UIButton) {
+        let photo = list.results[sender.tag]
+        let likedItem = LikedItem(id: photo.id, image: photo.urls.small, regDate: Date())
+        if repository.isLiked(id: photo.id) {
+            repository.deleteItem(id: photo.id)
+        } else {
+            repository.createItem(likedItem)
+        }
+        resultCollectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])
     }
 }
  
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else { return }
-        searchRequest(query: text)
+        page = 1
+        searchRequest(query: text, sort: .latest)
+        query = text
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let text = searchBar.text, text.isEmpty {
             startView.isHidden = false
+            sortButton.isHidden = true
             resultView.isHidden = true
             noResultView.isHidden = true
         }
@@ -161,15 +209,29 @@ extension SearchViewController: UISearchBarDelegate {
 }
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count
+        return list.results.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell()}
-        let data = list[indexPath.item]
+        let data = list.results[indexPath.item]
         cell.configureCell(data: data)
+        cell.likeButton.tag = indexPath.item
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         return cell
     }
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
+    }
+}
+
+extension SearchViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print(#function, indexPaths)
+        for indexPath in indexPaths {
+            if list.results.count - 4 == indexPath.item && list.total_pages > page {
+                page += 1
+                searchRequest(query: query, sort: sort)
+            }
+        }
+    }
 }

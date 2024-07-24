@@ -35,11 +35,12 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         view.font = Constant.Font.regular13
         return view
     }()
-    private let likeButton = {
+    let likeButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "like_circle_inactive"), for: .normal)
         return view
     }()
+    let repository = LikedItemRepository()
     
     override func configureHierarchy() {
         contentView.addSubview(photoImageView)
@@ -81,6 +82,11 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         
         likesLabel.text = data.likesString
         // TODO: 여기서 좋아요 판별해서 버튼 이미지 세팅해주기!
+        if repository.isLiked(id: data.id) {
+            likeButton.setImage(UIImage(named: "like_circle"), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(named: "like_circle_inactive"), for: .normal)
+        }
     }
 }
 
