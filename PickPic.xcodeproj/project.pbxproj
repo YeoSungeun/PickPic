@@ -39,6 +39,7 @@
 		A0D1EAF32C51ADC5006C3CC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EAF22C51ADC5006C3CC6 /* RealmSwift */; };
 		A0D1EAF52C51AF34006C3CC6 /* LikedItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAF42C51AF34006C3CC6 /* LikedItemRepository.swift */; };
 		A0D1EAF82C51C2AA006C3CC6 /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAF72C51C2AA006C3CC6 /* LikeCollectionViewCell.swift */; };
+		A0D1EB122C5250B9006C3CC6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EB112C5250B9006C3CC6 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D1EB122C5250B9006C3CC6 /* IQKeyboardManagerSwift in Frameworks */,
 				A0D1EAF32C51ADC5006C3CC6 /* RealmSwift in Frameworks */,
 				A0D1EAB42C4FF0EE006C3CC6 /* Alamofire in Frameworks */,
 				A0D1EAB12C4FF0E1006C3CC6 /* Kingfisher in Frameworks */,
@@ -322,6 +324,7 @@
 				A0D1EAB02C4FF0E1006C3CC6 /* Kingfisher */,
 				A0D1EAB32C4FF0EE006C3CC6 /* Alamofire */,
 				A0D1EAF22C51ADC5006C3CC6 /* RealmSwift */,
+				A0D1EB112C5250B9006C3CC6 /* IQKeyboardManagerSwift */,
 			);
 			productName = PickPic;
 			productReference = A096BE0E2C4E4E4600F6026D /* PickPic.app */;
@@ -356,6 +359,7 @@
 				A0D1EAAF2C4FF0E1006C3CC6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				A0D1EAB22C4FF0EE006C3CC6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				A0D1EAF12C51ADC5006C3CC6 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				A0D1EB102C5250B9006C3CC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = A096BE0F2C4E4E4600F6026D /* Products */;
 			projectDirPath = "";
@@ -663,6 +667,14 @@
 				version = 10.52.1;
 			};
 		};
+		A0D1EB102C5250B9006C3CC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -685,6 +697,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A0D1EAF12C51ADC5006C3CC6 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		A0D1EB112C5250B9006C3CC6 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0D1EB102C5250B9006C3CC6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

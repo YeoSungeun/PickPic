@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
 
 final class LikeViewController: BaseViewController {
     private let sortView = UIView()
