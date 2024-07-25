@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopicViewController: BaseViewController {
+final class TopicViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function,"TopicViewController")

@@ -28,21 +28,33 @@ final class LikedItemRepository {
             realm.delete(realm.objects(LikedItem.self).filter("id=%@", id))
         }
     }
+
+    // 과거순
+    func getDateAsc() -> [LikedItem] {
+        let value = realm.objects(LikedItem.self).sorted(byKeyPath: "regDate", ascending: true)
+        return Array(value)
+    }
+    // 최신순
+    func getDataDesc() -> [LikedItem] {
+        let value = realm.objects(LikedItem.self).sorted(byKeyPath: "regDate", ascending: false)
+        return Array(value)
+    }
+    
     func isLiked(id: String) -> Bool {
-        let list = fetchAll()
-        let likedList = list?.where({
+        let list = realm.objects(LikedItem.self)
+        let likedList = list.where({
             $0.id == id
         })
-        if likedList?.count != 0 {
+        if likedList.count != 0 {
             return true
         } else {
             return false
         }
     }
     
-    func fetchAll() -> Results<LikedItem>! {
+    func fetchAll() -> [LikedItem] {
         let value = realm.objects(LikedItem.self)
-        return value
+        return Array(value)
     }
     func fetchData(id: String) -> LikedItem? {
         guard let value = realm.object(ofType: LikedItem.self, forPrimaryKey: id) else { return nil }

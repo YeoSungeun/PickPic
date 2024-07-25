@@ -61,6 +61,10 @@ final class SearchViewController: BaseViewController {
     private var sort = SearchSort.relevant
     
     private var repository = LikedItemRepository()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resultCollectionView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         repository.getFileURL()
@@ -194,7 +198,8 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else { return }
         page = 1
-        searchRequest(query: text, sort: .latest)
+        searchRequest(query: text, sort: .relevant)
+        sortButton.configuration = .sortButtonStyle(title: SearchSort.relevant.sortString)
         query = text
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
