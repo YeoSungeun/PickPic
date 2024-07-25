@@ -24,3 +24,22 @@ extension UIButton.Configuration {
         return configuration
     }
 }
+
+extension UIButton {
+    func setEnabledOkaybutton(title: String) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(Constant.Color.white, for: .normal)
+        self.backgroundColor = Constant.Color.blue
+        titleLabel?.font = Constant.Font.bold16
+        self.layer.cornerRadius = 25
+        self.isEnabled = true
+    }
+    func setDisabledOkaybutton(title: String) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(Constant.Color.white, for: .normal)
+        self.backgroundColor = Constant.Color.gray
+        titleLabel?.font = Constant.Font.bold16
+        self.layer.cornerRadius = 25
+        self.isEnabled = false
+    }
+}

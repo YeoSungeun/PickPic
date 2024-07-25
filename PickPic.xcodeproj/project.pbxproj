@@ -40,6 +40,7 @@
 		A0D1EAF52C51AF34006C3CC6 /* LikedItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAF42C51AF34006C3CC6 /* LikedItemRepository.swift */; };
 		A0D1EAF82C51C2AA006C3CC6 /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAF72C51C2AA006C3CC6 /* LikeCollectionViewCell.swift */; };
 		A0D1EB122C5250B9006C3CC6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EB112C5250B9006C3CC6 /* IQKeyboardManagerSwift */; };
+		A0D1EB152C525905006C3CC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		A0D1EAEF2C51AD5B006C3CC6 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		A0D1EAF42C51AF34006C3CC6 /* LikedItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemRepository.swift; sourceTree = "<group>"; };
 		A0D1EAF72C51C2AA006C3CC6 /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				A096BE3D2C4E9DD800F6026D /* TabBar */,
+				A0D1EB132C5258F0006C3CC6 /* OnBoarding */,
 				A096BE3A2C4E9DBB00F6026D /* Detail */,
 				A096BE372C4E9D9500F6026D /* Like */,
 				A096BE342C4E9D7F00F6026D /* Search */,
@@ -303,6 +306,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		A0D1EB132C5258F0006C3CC6 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -401,6 +412,7 @@
 				A096BE282C4E4F3D00F6026D /* APIKey.swift in Sources */,
 				A096BE322C4E9D7100F6026D /* TopicViewController.swift in Sources */,
 				A0D1EAED2C50EE3B006C3CC6 /* Reusable.swift in Sources */,
+				A0D1EB152C525905006C3CC6 /* OnboardingViewController.swift in Sources */,
 				A096BE452C4F21B800F6026D /* Photo.swift in Sources */,
 				A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */,
 				A0D1EAE92C50E515006C3CC6 /* SearchCollectionViewCell.swift in Sources */,

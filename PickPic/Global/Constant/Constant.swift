@@ -29,6 +29,7 @@ enum Constant {
         static let regular13 = UIFont.systemFont(ofSize: 13)
         
         static let logo = UIFont(name: "Rockwell Bold", size: 40)
+        static let name = UIFont.systemFont(ofSize: 32, weight: .heavy)
 
     }
 }
