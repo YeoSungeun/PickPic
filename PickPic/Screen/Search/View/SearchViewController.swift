@@ -56,6 +56,7 @@ final class SearchViewController: BaseViewController {
             }
         }
     }
+    private var imageView = UIImageView()
     private var query = ""
     private var page = 1
     private var sort = SearchSort.relevant
@@ -182,12 +183,15 @@ final class SearchViewController: BaseViewController {
             }
         }
     }
+    
     @objc private func likeButtonClicked(sender: UIButton) {
         let photo = list.results[sender.tag]
         let likedItem = LikedItem(id: photo.id, image: photo.urls.small, width: photo.width, height: photo.height, regDate: Date(), createdDate: photo.created_at, photographerName: photo.user.name, photographerProfile: photo.user.profile_image?.small)
         if repository.isLiked(id: photo.id) {
+            FileService.removeImageFromDocument(filename: "\(photo.id)")
             repository.deleteItem(id: photo.id)
         } else {
+            FileService.saveImageToDocument(image: photo.urls.small, filename: "\(photo.id)")
             repository.createItem(likedItem)
         }
         resultCollectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])

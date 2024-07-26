@@ -29,6 +29,7 @@ final class DetailViewModel {
     var outputConstraintHeight = Observable(0.0)
     var outputUserName = Observable("")
     var outputUserProfileImage: Observable<String?> = Observable(nil)
+    var outputAlert: Observable<Void?> = Observable(nil)
     
     
     let repository = LikedItemRepository()
@@ -93,7 +94,7 @@ final class DetailViewModel {
     func getStatistics(id: String) {
         NetworkManager.shared.apiRequest(api: .detail(id: id), model: PhotoDetail.self) { value, error in
             if let error = error {
-                print("error 있음!처리..")
+                self.outputAlert.value = ()
                 return
             }
             guard let value = value else { return }
@@ -110,15 +111,18 @@ final class DetailViewModel {
     }
     func toggleLikedButton(id: String) {
         if repository.isLiked(id: id) {
+            FileService.removeImageFromDocument(filename: "\(id)")
             repository.deleteItem(id: id)
             self.outputIsLiked.value = false
         } else {
             if photoType == .Photo {
                 guard let data = inputPhoto.value else { return }
                 let likedItem = LikedItem(id: data.id, image: data.urls.small, width: data.width, height: data.height, regDate: Date(), createdDate: data.created_at, photographerName: data.user.name, photographerProfile: data.user.profile_image?.small)
+                FileService.saveImageToDocument(image: data.urls.small, filename: data.id)
                 repository.createItem(likedItem)
             } else if photoType == .LikedItem {
                 guard let data = inputLikedItem.value else { return }
+                FileService.saveImageToDocument(image: data.image, filename: data.id)
                 repository.createItem(data)
             }
             self.outputIsLiked.value = true

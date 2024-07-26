@@ -141,6 +141,7 @@ final class LikeViewController: BaseViewController {
     }
     @objc private func likeButtonClicked(sender: UIButton) {
         let photo = list[sender.tag]
+        FileService.removeImageFromDocument(filename: photo.id)
         repository.deleteItem(id: photo.id)
         list.remove(at: sender.tag)
         likeCollectionView.reloadData()
@@ -158,6 +159,7 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikeCollectionViewCell.id, for: indexPath) as? LikeCollectionViewCell else { return UICollectionViewCell()}
         let data = list[indexPath.item]
         cell.configureCell(data: data)
+//        cell.photoImageView.image = loadImageToDocument(filename: "\(data.id)")
         cell.likeButton.tag = indexPath.item
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         return cell

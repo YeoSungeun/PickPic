@@ -81,6 +81,11 @@ final class DetailViewController: BaseViewController {
         viewModel.inputLikedButtonClicked.value = ()
     }
     func bindData() {
+        viewModel.outputAlert.bindLater { [weak self] _ in
+            self?.showAlert(title: "데이터를 불러오는데 실패했습니다.", message: "", ok: "확인", handler: {
+                self?.navigationController?.popViewController(animated: true)
+            })
+        }
         viewModel.outputConstraintHeight.bind { [weak self] _ in
             print("========height", self?.viewModel.outputConstraintHeight.value)
             self?.configureHierarchy()

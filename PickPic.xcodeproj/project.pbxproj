@@ -14,6 +14,8 @@
 		A0232DE22C53BE21009CFA43 /* PhotoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE12C53BE21009CFA43 /* PhotoDetail.swift */; };
 		A0232DE42C54027E009CFA43 /* _DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE32C54027E009CFA43 /* _DateFormatter.swift */; };
 		A0232DE62C5402A5009CFA43 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE52C5402A5009CFA43 /* String+Extension.swift */; };
+		A0232DE82C54187C009CFA43 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE72C54187C009CFA43 /* UIViewController+Extension.swift */; };
+		A0232DEC2C542889009CFA43 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DEB2C542889009CFA43 /* FileService.swift */; };
 		A096BE122C4E4E4600F6026D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE112C4E4E4600F6026D /* AppDelegate.swift */; };
 		A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE132C4E4E4600F6026D /* SceneDelegate.swift */; };
 		A096BE1B2C4E4E4800F6026D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A096BE1A2C4E4E4800F6026D /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 		A0232DE12C53BE21009CFA43 /* PhotoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetail.swift; sourceTree = "<group>"; };
 		A0232DE32C54027E009CFA43 /* _DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _DateFormatter.swift; sourceTree = "<group>"; };
 		A0232DE52C5402A5009CFA43 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		A0232DE72C54187C009CFA43 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A0232DEB2C542889009CFA43 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		A096BE0E2C4E4E4600F6026D /* PickPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A096BE112C4E4E4600F6026D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A096BE132C4E4E4600F6026D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				A096BE2C2C4E70A800F6026D /* DB */,
 				A096BE2B2C4E709E00F6026D /* Network */,
 				A0232DDB2C537AA5009CFA43 /* Observable.swift */,
+				A0232DEB2C542889009CFA43 /* FileService.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				A0D1EAEA2C50E7AA006C3CC6 /* UIButton+Extension.swift */,
 				A0D1EAEC2C50EE3B006C3CC6 /* Reusable.swift */,
 				A0232DE52C5402A5009CFA43 /* String+Extension.swift */,
+				A0232DE72C54187C009CFA43 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A096BE412C4F10AD00F6026D /* NetworkManager.swift in Sources */,
+				A0232DEC2C542889009CFA43 /* FileService.swift in Sources */,
 				A0D1EABC2C506C7E006C3CC6 /* Constant.swift in Sources */,
 				A0D1EAA82C4FDEE3006C3CC6 /* PhotoRequest.swift in Sources */,
 				A0D1EABF2C506CF6006C3CC6 /* UIColor+Extension.swift in Sources */,
@@ -483,6 +490,7 @@
 				A0232DE02C537E7D009CFA43 /* StatisticsView.swift in Sources */,
 				A096BE392C4E9DA900F6026D /* LikeViewController.swift in Sources */,
 				A0D1EAF82C51C2AA006C3CC6 /* LikeCollectionViewCell.swift in Sources */,
+				A0232DE82C54187C009CFA43 /* UIViewController+Extension.swift in Sources */,
 				A0D1EA822C4F67D8006C3CC6 /* BaseView.swift in Sources */,
 				A0232DE42C54027E009CFA43 /* _DateFormatter.swift in Sources */,
 				A0D1EAC12C506ECF006C3CC6 /* Sort.swift in Sources */,

@@ -42,9 +42,10 @@ final class LikeCollectionViewCell: BaseCollectionViewCell {
         contentView.backgroundColor = Constant.Color.lightGray
     }
     func configureCell(data: LikedItem) {
-        guard let url = URL(string: data.image) else { return }
-        photoImageView.kf.setImage(with: url)
         
+//        guard let url = URL(string: data.image) else { return }
+//        photoImageView.kf.setImage(with: url)
+        photoImageView.image = FileService.loadImageToDocument(filename: "\(data.id)")
         if repository.isLiked(id: data.id) {
             likeButton.setImage(UIImage(named: "like_circle"), for: .normal)
         } else {

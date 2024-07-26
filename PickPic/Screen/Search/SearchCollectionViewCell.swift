@@ -10,7 +10,7 @@ import SnapKit
 import Kingfisher
 
 final class SearchCollectionViewCell: BaseCollectionViewCell {
-    private let photoImageView = {
+    let photoImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
