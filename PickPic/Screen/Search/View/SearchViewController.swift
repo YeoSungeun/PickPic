@@ -184,7 +184,7 @@ final class SearchViewController: BaseViewController {
     }
     @objc private func likeButtonClicked(sender: UIButton) {
         let photo = list.results[sender.tag]
-        let likedItem = LikedItem(id: photo.id, image: photo.urls.small, regDate: Date())
+        let likedItem = LikedItem(id: photo.id, image: photo.urls.small, width: photo.width, height: photo.height, regDate: Date())
         if repository.isLiked(id: photo.id) {
             repository.deleteItem(id: photo.id)
         } else {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Photo: Decodable {
+struct Photo: Decodable, Hashable {
     let id: String
     let created_at: String
     let width: Int
@@ -22,18 +22,18 @@ struct Photo: Decodable {
     }
 }
 
-struct ImageSize: Decodable  {
+struct ImageSize: Decodable, Hashable {
     let raw: String
     let regular: String
     let small: String
 }
 
-struct User: Decodable  {
+struct User: Decodable, Hashable {
     let id: String
     let name: String
     let profile_image: ProfileImageSize?
 }
 
-struct ProfileImageSize: Decodable  {
+struct ProfileImageSize: Decodable, Hashable  {
     let small, medium, large: String
 }

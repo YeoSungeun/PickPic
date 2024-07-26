@@ -65,3 +65,9 @@ final class OnboardingViewController: BaseViewController {
         }
     }
 }
+#if DEBUG
+@available (iOS 17, *)
+#Preview {
+    OnboardingViewController()
+}
+#endif

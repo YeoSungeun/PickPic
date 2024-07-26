@@ -17,7 +17,7 @@ extension UIViewController: ReusableProtocol {
     }
 }
 
-extension UICollectionViewCell: ReusableProtocol {
+extension UICollectionReusableView: ReusableProtocol {
     static var id: String {
         return String(describing: self)
     }

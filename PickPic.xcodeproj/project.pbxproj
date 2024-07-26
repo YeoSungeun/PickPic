@@ -41,6 +41,9 @@
 		A0D1EAF82C51C2AA006C3CC6 /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAF72C51C2AA006C3CC6 /* LikeCollectionViewCell.swift */; };
 		A0D1EB122C5250B9006C3CC6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EB112C5250B9006C3CC6 /* IQKeyboardManagerSwift */; };
 		A0D1EB152C525905006C3CC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */; };
+		A0D1EB172C53214A006C3CC6 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB162C53214A006C3CC6 /* TestView.swift */; };
+		A0D1EB1D2C535B8A006C3CC6 /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB1C2C535B8A006C3CC6 /* TopicCollectionViewCell.swift */; };
+		A0D1EB1F2C535D2E006C3CC6 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB1E2C535D2E006C3CC6 /* TitleSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +55,7 @@
 		A096BE1F2C4E4E4800F6026D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = PickPic/Resource/Info.plist; sourceTree = SOURCE_ROOT; };
 		A096BE252C4E4E5800F6026D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A096BE272C4E4F3D00F6026D /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		A096BE312C4E9D7100F6026D /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
+		A096BE312C4E9D7100F6026D /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TopicViewController.swift; path = ../TopicViewController.swift; sourceTree = "<group>"; };
 		A096BE352C4E9D8C00F6026D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A096BE382C4E9DA900F6026D /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
 		A096BE3B2C4E9DCB00F6026D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +78,9 @@
 		A0D1EAF42C51AF34006C3CC6 /* LikedItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemRepository.swift; sourceTree = "<group>"; };
 		A0D1EAF72C51C2AA006C3CC6 /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		A0D1EB162C53214A006C3CC6 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		A0D1EB1C2C535B8A006C3CC6 /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0D1EB1E2C535D2E006C3CC6 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +212,8 @@
 		A096BE332C4E9D7800F6026D /* Topic */ = {
 			isa = PBXGroup;
 			children = (
-				A096BE312C4E9D7100F6026D /* TopicViewController.swift */,
+				A0D1EB1B2C535B79006C3CC6 /* Cell */,
+				A0D1EB1A2C535B6B006C3CC6 /* View */,
 			);
 			path = Topic;
 			sourceTree = "<group>";
@@ -252,6 +259,7 @@
 				A0D1EA7D2C4F67A5006C3CC6 /* BaseTableViewCell.swift */,
 				A0D1EA7F2C4F67BD006C3CC6 /* BaseCollectionViewCell.swift */,
 				A0D1EA812C4F67D8006C3CC6 /* BaseView.swift */,
+				A0D1EB162C53214A006C3CC6 /* TestView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -312,6 +320,23 @@
 				A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		A0D1EB1A2C535B6B006C3CC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A096BE312C4E9D7100F6026D /* TopicViewController.swift */,
+				A0D1EB1E2C535D2E006C3CC6 /* TitleSupplementaryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0D1EB1B2C535B79006C3CC6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A0D1EB1C2C535B8A006C3CC6 /* TopicCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,8 +446,11 @@
 				A0D1EA822C4F67D8006C3CC6 /* BaseView.swift in Sources */,
 				A0D1EAC12C506ECF006C3CC6 /* Sort.swift in Sources */,
 				A0D1EA7E2C4F67A5006C3CC6 /* BaseTableViewCell.swift in Sources */,
+				A0D1EB1D2C535B8A006C3CC6 /* TopicCollectionViewCell.swift in Sources */,
 				A0D1EAF52C51AF34006C3CC6 /* LikedItemRepository.swift in Sources */,
+				A0D1EB1F2C535D2E006C3CC6 /* TitleSupplementaryView.swift in Sources */,
 				A096BE3C2C4E9DCB00F6026D /* DetailViewController.swift in Sources */,
+				A0D1EB172C53214A006C3CC6 /* TestView.swift in Sources */,
 				A0D1EAEB2C50E7AA006C3CC6 /* UIButton+Extension.swift in Sources */,
 				A0D1EAF02C51AD5B006C3CC6 /* RealmModel.swift in Sources */,
 			);
