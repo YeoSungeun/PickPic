@@ -9,14 +9,14 @@ import UIKit
 import Kingfisher
 
 
-class TopicCollectionViewCell: BaseCollectionViewCell {
+final class TopicCollectionViewCell: BaseCollectionViewCell {
     
     private let mainImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.layer.cornerRadius = 12
-        view.backgroundColor = .green
+        view.backgroundColor = Constant.Color.lightGray
         return view
     }()
     private let likesView = {

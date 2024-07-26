@@ -17,11 +17,21 @@ final class DetailViewController: BaseViewController {
         return view
     }()
     private let statisticsView = StatisticsView()
+    let viewModel = DetailViewModel()
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         topInfoView.photographerProfileImageView.layoutIfNeeded()
         topInfoView.photographerProfileImageView.layer.cornerRadius = topInfoView.photographerProfileImageView.frame.height / 2
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+    override func viewDidLoad() {
+        viewModel.inputScreenWidth.value = UIScreen.main.bounds.width
+        super.viewDidLoad()
+        bindData()
     }
     override func configureHierarchy() {
         view.addSubview(scrollView)
@@ -45,8 +55,8 @@ final class DetailViewController: BaseViewController {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(topInfoView.snp.bottom)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
-            make.width.equalTo(view.snp.width)
-            make.height.equalTo(800)
+            make.width.equalTo(UIScreen.main.bounds.width)
+            make.height.equalTo(viewModel.outputConstraintHeight.value)
         }
         statisticsView.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(8)
@@ -56,9 +66,57 @@ final class DetailViewController: BaseViewController {
         
     }
     override func configureView() {
-        topInfoView.backgroundColor = .yellow
-        imageView.backgroundColor = .green
+        super.configureView()
+        imageView.backgroundColor = Constant.Color.lightGray
+      
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonClicked))
+        backButton.tintColor = Constant.Color.black
+        navigationItem.leftBarButtonItem = backButton
+        topInfoView.likedButton.addTarget(self, action: #selector(likedButtonClicked), for: .touchUpInside)
     }
+    @objc func backButtonClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    @objc func likedButtonClicked() {
+        viewModel.inputLikedButtonClicked.value = ()
+    }
+    func bindData() {
+        viewModel.outputConstraintHeight.bind { [weak self] _ in
+            print("========height", self?.viewModel.outputConstraintHeight.value)
+            self?.configureHierarchy()
+        }
+        viewModel.outputUserProfileImage.bind { [weak self] value in
+            guard let url = URL(string: value ?? "") else { return }
+            self?.topInfoView.photographerProfileImageView.kf.setImage(with: url)
+        }
+        viewModel.outputUserName.bind { [weak self] value in
+            self?.topInfoView.photographerNameLabel.text = value
+        }
+        viewModel.outputCreatedAt.bind { [weak self] value in
+            self?.topInfoView.createDateLabel.text = value
+        }
+        viewModel.outputPhotoUrl.bind { [weak self] value in
+            guard let url = URL(string: value) else { return }
+            self?.imageView.kf.setImage(with: url)
+        }
+        viewModel.outputSize.bind { [weak self] (width, height) in
+            self?.statisticsView.sizeView.content.text = "\(width) x \(height)"
+        }
+        viewModel.outputViews.bind { [weak self] value in
+            self?.statisticsView.viewsView.content.text = value.formatted()
+        }
+        viewModel.outputDownloads.bind { [weak self] value in
+            self?.statisticsView.downloadView.content.text = value.formatted()
+        }
+        viewModel.outputIsLiked.bind { [weak self] value in
+            let image = value ? UIImage(named: "like") : UIImage(named: "like_inactive")?.withTintColor(Constant.Color.gray.withAlphaComponent(0.5))
+            self?.topInfoView.likedButton.setImage(image, for: .normal)
+            
+        }
+    }
+}
+extension DetailViewModel {
+
 }
 
 #if DEBUG

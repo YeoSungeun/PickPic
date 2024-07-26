@@ -14,14 +14,21 @@ class LikedItem: Object {
     @Persisted var width : Int
     @Persisted var height : Int
     @Persisted var regDate : Date
+    @Persisted var createdDate: String
+    @Persisted var photographerName: String
+    @Persisted var photographerProfile: String?
     
-    convenience init(id: String, image: String, width: Int, height: Int, regDate: Date) {
+    
+    convenience init(id: String, image: String, width: Int, height: Int, regDate: Date, createdDate: String, photographerName: String, photographerProfile: String?) {
         self.init()
         self.id = id
         self.image = image
         self.width = width
         self.height = height
         self.regDate = regDate
+        self.createdDate = createdDate
+        self.photographerName = photographerName
+        self.photographerProfile = photographerProfile
     }
 }
 

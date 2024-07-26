@@ -184,7 +184,7 @@ final class SearchViewController: BaseViewController {
     }
     @objc private func likeButtonClicked(sender: UIButton) {
         let photo = list.results[sender.tag]
-        let likedItem = LikedItem(id: photo.id, image: photo.urls.small, width: photo.width, height: photo.height, regDate: Date())
+        let likedItem = LikedItem(id: photo.id, image: photo.urls.small, width: photo.width, height: photo.height, regDate: Date(), createdDate: photo.created_at, photographerName: photo.user.name, photographerProfile: photo.user.profile_image?.small)
         if repository.isLiked(id: photo.id) {
             repository.deleteItem(id: photo.id)
         } else {
@@ -225,7 +225,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function)
+        print(#function, indexPath)
+        let vc = DetailViewController()
+        vc.viewModel.inputPhoto.value = list.results[indexPath.item]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

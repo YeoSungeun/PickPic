@@ -30,8 +30,9 @@ final class StatisticsDetailView: UIView {
         }
         content.snp.makeConstraints { make in
             make.centerY.equalTo(self.snp.centerY)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).inset(8)
+            make.trailing.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
+        self.backgroundColor = .systemBackground
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -72,7 +73,7 @@ final class StatisticsView: BaseView {
     }
     override func configureLayout() {
         contentsView.snp.makeConstraints { make in
-            make.leading.verticalEdges.equalTo(self.safeAreaLayoutGuide).offset(8)
+            make.leading.verticalEdges.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.width.equalTo(120)
         }
         infoLabel.snp.makeConstraints { make in
@@ -84,6 +85,7 @@ final class StatisticsView: BaseView {
         }
     }
     override func configureView() {
+        super.configureView()
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally

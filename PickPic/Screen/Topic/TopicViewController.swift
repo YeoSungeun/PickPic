@@ -11,7 +11,7 @@ import SnapKit
 final class TopicViewController: BaseViewController {
     static let headerElementKind = "header-element-kind"
     private enum TopicId: Int, CaseIterable {
-        case goldenHour
+        case goldenHour = 0
         case businessWork
         case architectureInterior
         
@@ -46,9 +46,13 @@ final class TopicViewController: BaseViewController {
         return collectionView
     }()
     private var dataSource: UICollectionViewDiffableDataSource<TopicId, Photo>!
-    private var goldenHourList: [Photo] = []
-    private var businessWorkList: [Photo] = []
-    private var architectureInteriorList: [Photo] = []
+    private var list: [[Photo]] = [[],[],[]]
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.sizeToFit()
+        navigationItem.largeTitleDisplayMode = .always
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +75,6 @@ final class TopicViewController: BaseViewController {
     override func configureView() {
         super.configureView()
         print(#function,"TopicViewController")
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.sizeToFit()
-        navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "OUR TOPIC"
         
         let profileButton = UIBarButtonItem(customView: TestView())
@@ -94,7 +95,7 @@ final class TopicViewController: BaseViewController {
                 print("error nil, value nil")
                 return
             }
-            self.goldenHourList = value
+            self.list[TopicId.goldenHour.rawValue] = value
             self.updateSnapshot()
         }
         NetworkManager.shared.apiRequest(api: .topic(topicId: TopicId.businessWork.id), model: [Photo].self) { value, error in
@@ -105,7 +106,7 @@ final class TopicViewController: BaseViewController {
                 print("error nil, value nil")
                 return
             }
-            self.businessWorkList = value
+            self.list[TopicId.businessWork.rawValue] = value
             self.updateSnapshot()
         }
         NetworkManager.shared.apiRequest(api: .topic(topicId: TopicId.architectureInterior.id), model: [Photo].self) { value, error in
@@ -116,7 +117,7 @@ final class TopicViewController: BaseViewController {
                 print("error nil, value nil")
                 return
             }
-            self.architectureInteriorList = value
+            self.list[TopicId.architectureInterior.rawValue] = value
             self.updateSnapshot()
         }
     }
@@ -178,14 +179,18 @@ extension TopicViewController {
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<TopicId, Photo>()
         snapshot.appendSections(TopicId.allCases)
-        snapshot.appendItems(goldenHourList, toSection: .goldenHour)
-        snapshot.appendItems(businessWorkList, toSection: .businessWork)
-        snapshot.appendItems(architectureInteriorList, toSection: .architectureInterior)
+        snapshot.appendItems(list[TopicId.goldenHour.rawValue], toSection: .goldenHour)
+        snapshot.appendItems(list[TopicId.businessWork.rawValue], toSection: .businessWork)
+        snapshot.appendItems(list[TopicId.architectureInterior.rawValue], toSection: .architectureInterior)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 extension TopicViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function, indexPath)
+        let vc = DetailViewController()
+        vc.viewModel.inputPhoto.value = list[indexPath.section][ indexPath.item]
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

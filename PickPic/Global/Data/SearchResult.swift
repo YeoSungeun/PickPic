@@ -11,5 +11,4 @@ struct SearchResult: Decodable {
     let total: Int
     let total_pages: Int
     var results: [Photo]
-
 }

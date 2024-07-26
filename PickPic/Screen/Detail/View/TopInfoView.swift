@@ -59,6 +59,7 @@ final class TopInfoView: BaseView {
         
     }
     override func configureView() {
+        super.configureView()
         photographerProfileImageView.image = UIImage(systemName: "star")
         photographerProfileImageView.backgroundColor = .red
         photographerNameLabel.text = "작가이름"
