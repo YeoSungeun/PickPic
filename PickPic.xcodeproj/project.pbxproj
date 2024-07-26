@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0232DDA2C537A89009CFA43 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DD92C537A89009CFA43 /* DetailViewModel.swift */; };
+		A0232DDC2C537AA5009CFA43 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DDB2C537AA5009CFA43 /* Observable.swift */; };
+		A0232DDE2C537E48009CFA43 /* TopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DDD2C537E48009CFA43 /* TopInfoView.swift */; };
+		A0232DE02C537E7D009CFA43 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DDF2C537E7D009CFA43 /* StatisticsView.swift */; };
 		A096BE122C4E4E4600F6026D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE112C4E4E4600F6026D /* AppDelegate.swift */; };
 		A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE132C4E4E4600F6026D /* SceneDelegate.swift */; };
 		A096BE1B2C4E4E4800F6026D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A096BE1A2C4E4E4800F6026D /* Assets.xcassets */; };
@@ -47,6 +51,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0232DD92C537A89009CFA43 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		A0232DDB2C537AA5009CFA43 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		A0232DDD2C537E48009CFA43 /* TopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoView.swift; sourceTree = "<group>"; };
+		A0232DDF2C537E7D009CFA43 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		A096BE0E2C4E4E4600F6026D /* PickPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A096BE112C4E4E4600F6026D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A096BE132C4E4E4600F6026D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +107,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0232DD72C537A59009CFA43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A096BE3B2C4E9DCB00F6026D /* DetailViewController.swift */,
+				A0232DDD2C537E48009CFA43 /* TopInfoView.swift */,
+				A0232DDF2C537E7D009CFA43 /* StatisticsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0232DD82C537A60009CFA43 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0232DD92C537A89009CFA43 /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A096BE052C4E4E4600F6026D = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +214,7 @@
 				A096BE2F2C4E742400F6026D /* Data */,
 				A096BE2C2C4E70A800F6026D /* DB */,
 				A096BE2B2C4E709E00F6026D /* Network */,
+				A0232DDB2C537AA5009CFA43 /* Observable.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -239,7 +266,8 @@
 		A096BE3A2C4E9DBB00F6026D /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				A096BE3B2C4E9DCB00F6026D /* DetailViewController.swift */,
+				A0232DD82C537A60009CFA43 /* ViewModel */,
+				A0232DD72C537A59009CFA43 /* View */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -430,6 +458,7 @@
 				A0D1EABF2C506CF6006C3CC6 /* UIColor+Extension.swift in Sources */,
 				A0D1EAB92C4FFCE9006C3CC6 /* SearchResult.swift in Sources */,
 				A0D1EA802C4F67BD006C3CC6 /* BaseCollectionViewCell.swift in Sources */,
+				A0232DDE2C537E48009CFA43 /* TopInfoView.swift in Sources */,
 				A096BE362C4E9D8C00F6026D /* SearchViewController.swift in Sources */,
 				A096BE122C4E4E4600F6026D /* AppDelegate.swift in Sources */,
 				A096BE3F2C4E9DEB00F6026D /* MainTabBarController.swift in Sources */,
@@ -437,10 +466,12 @@
 				A096BE282C4E4F3D00F6026D /* APIKey.swift in Sources */,
 				A096BE322C4E9D7100F6026D /* TopicViewController.swift in Sources */,
 				A0D1EAED2C50EE3B006C3CC6 /* Reusable.swift in Sources */,
+				A0232DDA2C537A89009CFA43 /* DetailViewModel.swift in Sources */,
 				A0D1EB152C525905006C3CC6 /* OnboardingViewController.swift in Sources */,
 				A096BE452C4F21B800F6026D /* Photo.swift in Sources */,
 				A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */,
 				A0D1EAE92C50E515006C3CC6 /* SearchCollectionViewCell.swift in Sources */,
+				A0232DE02C537E7D009CFA43 /* StatisticsView.swift in Sources */,
 				A096BE392C4E9DA900F6026D /* LikeViewController.swift in Sources */,
 				A0D1EAF82C51C2AA006C3CC6 /* LikeCollectionViewCell.swift in Sources */,
 				A0D1EA822C4F67D8006C3CC6 /* BaseView.swift in Sources */,
@@ -450,6 +481,7 @@
 				A0D1EAF52C51AF34006C3CC6 /* LikedItemRepository.swift in Sources */,
 				A0D1EB1F2C535D2E006C3CC6 /* TitleSupplementaryView.swift in Sources */,
 				A096BE3C2C4E9DCB00F6026D /* DetailViewController.swift in Sources */,
+				A0232DDC2C537AA5009CFA43 /* Observable.swift in Sources */,
 				A0D1EB172C53214A006C3CC6 /* TestView.swift in Sources */,
 				A0D1EAEB2C50E7AA006C3CC6 /* UIButton+Extension.swift in Sources */,
 				A0D1EAF02C51AD5B006C3CC6 /* RealmModel.swift in Sources */,

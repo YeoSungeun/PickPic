@@ -40,7 +40,7 @@ final class TopInfoView: BaseView {
     }
     override func configureLayout() {
         photographerProfileImageView.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(self.safeAreaLayoutGuide).inset(8)
+            make.verticalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
             make.width.equalTo(photographerProfileImageView.snp.height)
         }
