@@ -33,9 +33,31 @@ class LikedItem: Object {
 }
 
 class UserInfo: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var isSignUp : Bool
+    @Persisted(primaryKey: true) var id: String
     @Persisted var nickname : String?
-
+    @Persisted var profileImageName: String?
+    @Persisted var E: Bool
+    @Persisted var S: Bool
+    @Persisted var T: Bool
+    @Persisted var J: Bool
+    @Persisted var I: Bool
+    @Persisted var N: Bool
+    @Persisted var F: Bool
+    @Persisted var P: Bool
+    
+    convenience init(id: String, nickname: String? = nil, profileImageName: String? = nil, E: Bool, S: Bool, T: Bool, J: Bool, I: Bool, N: Bool, F: Bool, P: Bool) {
+        self.init()
+        self.id = "userID"
+        self.nickname = nickname
+        self.profileImageName = profileImageName
+        self.E = false
+        self.S = false
+        self.T = false
+        self.J = false
+        self.I = false
+        self.N = false
+        self.F = false
+        self.P = false
+    }
 }
 

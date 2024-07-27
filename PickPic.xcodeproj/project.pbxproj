@@ -23,6 +23,9 @@
 		A0232DFA2C54E47F009CFA43 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DF92C54E47F009CFA43 /* ViewType.swift */; };
 		A0232DFE2C54E909009CFA43 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DFD2C54E909009CFA43 /* ProfileImageCollectionViewCell.swift */; };
 		A0232E012C54F742009CFA43 /* ProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232E002C54F742009CFA43 /* ProfileSettingViewModel.swift */; };
+		A0232E042C54FF96009CFA43 /* MBTICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232E032C54FF96009CFA43 /* MBTICollectionViewCell.swift */; };
+		A0232E062C551D43009CFA43 /* MBTIInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232E052C551D43009CFA43 /* MBTIInfo.swift */; };
+		A0232E082C5520A7009CFA43 /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232E072C5520A7009CFA43 /* UserInfoRepository.swift */; };
 		A096BE122C4E4E4600F6026D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE112C4E4E4600F6026D /* AppDelegate.swift */; };
 		A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE132C4E4E4600F6026D /* SceneDelegate.swift */; };
 		A096BE1B2C4E4E4800F6026D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A096BE1A2C4E4E4800F6026D /* Assets.xcassets */; };
@@ -79,6 +82,9 @@
 		A0232DF92C54E47F009CFA43 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		A0232DFD2C54E909009CFA43 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0232E002C54F742009CFA43 /* ProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewModel.swift; sourceTree = "<group>"; };
+		A0232E032C54FF96009CFA43 /* MBTICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTICollectionViewCell.swift; sourceTree = "<group>"; };
+		A0232E052C551D43009CFA43 /* MBTIInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIInfo.swift; sourceTree = "<group>"; };
+		A0232E072C5520A7009CFA43 /* UserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepository.swift; sourceTree = "<group>"; };
 		A096BE0E2C4E4E4600F6026D /* PickPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A096BE112C4E4E4600F6026D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A096BE132C4E4E4600F6026D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 		A0232DF22C54DEA3009CFA43 /* ProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
+				A0232E022C54FF7E009CFA43 /* Cell */,
 				A0232DFF2C54F72B009CFA43 /* ViewModel */,
 				A0232DF52C54DEE7009CFA43 /* View */,
 			);
@@ -205,6 +212,14 @@
 				A0232E002C54F742009CFA43 /* ProfileSettingViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0232E022C54FF7E009CFA43 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A0232E032C54FF96009CFA43 /* MBTICollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		A096BE052C4E4E4600F6026D = {
@@ -269,6 +284,7 @@
 			children = (
 				A0D1EAEF2C51AD5B006C3CC6 /* RealmModel.swift */,
 				A0D1EAF42C51AF34006C3CC6 /* LikedItemRepository.swift */,
+				A0232E072C5520A7009CFA43 /* UserInfoRepository.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -308,6 +324,7 @@
 		A096BE2F2C4E742400F6026D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A0232E052C551D43009CFA43 /* MBTIInfo.swift */,
 				A096BE442C4F21B800F6026D /* Photo.swift */,
 				A0D1EAB82C4FFCE9006C3CC6 /* SearchResult.swift */,
 				A0232DE12C53BE21009CFA43 /* PhotoDetail.swift */,
@@ -552,12 +569,14 @@
 				A0D1EAA82C4FDEE3006C3CC6 /* PhotoRequest.swift in Sources */,
 				A0D1EABF2C506CF6006C3CC6 /* UIColor+Extension.swift in Sources */,
 				A0D1EAB92C4FFCE9006C3CC6 /* SearchResult.swift in Sources */,
+				A0232E062C551D43009CFA43 /* MBTIInfo.swift in Sources */,
 				A0D1EA802C4F67BD006C3CC6 /* BaseCollectionViewCell.swift in Sources */,
 				A0232DF12C54CDDA009CFA43 /* ProfileImageType.swift in Sources */,
 				A0232DDE2C537E48009CFA43 /* TopInfoView.swift in Sources */,
 				A096BE362C4E9D8C00F6026D /* SearchViewController.swift in Sources */,
 				A096BE122C4E4E4600F6026D /* AppDelegate.swift in Sources */,
 				A0232E012C54F742009CFA43 /* ProfileSettingViewModel.swift in Sources */,
+				A0232E042C54FF96009CFA43 /* MBTICollectionViewCell.swift in Sources */,
 				A096BE3F2C4E9DEB00F6026D /* MainTabBarController.swift in Sources */,
 				A0232DFE2C54E909009CFA43 /* ProfileImageCollectionViewCell.swift in Sources */,
 				A0D1EA7C2C4F66CE006C3CC6 /* BaseViewController.swift in Sources */,
@@ -588,6 +607,7 @@
 				A0D1EB172C53214A006C3CC6 /* TestView.swift in Sources */,
 				A0232DE22C53BE21009CFA43 /* PhotoDetail.swift in Sources */,
 				A0D1EAEB2C50E7AA006C3CC6 /* UIButton+Extension.swift in Sources */,
+				A0232E082C5520A7009CFA43 /* UserInfoRepository.swift in Sources */,
 				A0D1EAF02C51AD5B006C3CC6 /* RealmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
