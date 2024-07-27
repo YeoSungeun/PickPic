@@ -46,7 +46,6 @@ final class DetailViewModel {
             self?.toggleLikedButton(id: self?.outputID.value ?? "")
         }
         inputScreenWidth.bind { [weak self] value in
-            print(value,"inputScreenWidth!!!!!!")
             self?.calculateHeight(width: self?.outputSize.value.width ?? 0, height: self?.outputSize.value.height ?? 0)
         }
     }
@@ -62,9 +61,7 @@ final class DetailViewModel {
             self?.validIsLiked(id: id)
         }
         outputPhotoUrl.value = photo.urls.small
-        //TODO: Dateformatter
-        outputCreatedAt.value = photo.created_at
-        print(outputCreatedAt.value, "outputcreate=============")
+        outputCreatedAt.value = photo.created_at.creadtedDateFormat()
         outputSize.value = (photo.width, photo.height)
         outputSize.bind { [weak self] (width, height) in
             self?.calculateHeight(width: width, height: height)

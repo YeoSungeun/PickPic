@@ -10,14 +10,15 @@ import UIKit
 class BaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        print("BaseView", #function)
         configureHierarchy()
         configureLayout()
         configureView()
     }
     
-    func configureHierarchy() { }
-    func configureLayout() { }
-    func configureView() { }
+    func configureHierarchy() { print("BaseView", #function) }
+    func configureLayout() { print("BaseView", #function) }
+    func configureView() { print("BaseView", #function) }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {

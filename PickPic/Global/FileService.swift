@@ -18,18 +18,20 @@ class FileService {
         guard let documentDirectory = FileManager.default.urls(
             for: .documentDirectory,
             in: .userDomainMask).first else { return }
+        print("========documentDirectory===========", documentDirectory)
         
         //이미지를 저장할 경로(파일명) 지정
         let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
-        
+        print("========fileURL===========", fileURL)
         //이미지 압축
         guard let data = imageView.image?.jpegData(compressionQuality: 0.5) else { return }
         
         //이미지 파일 저장
         do {
             try data.write(to: fileURL)
+            print("===========file save sucess=========")
         } catch {
-            print("file save error", error)
+            print("===========file save error=========", error)
         }
     }
     

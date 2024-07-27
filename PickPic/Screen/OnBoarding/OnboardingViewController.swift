@@ -30,12 +30,18 @@ final class OnboardingViewController: BaseViewController {
         view.font = Constant.Font.name
         return view
     }()
-    private let startButton = {
+    private lazy var startButton = {
         var view = UIButton()
         view.setEnabledOkaybutton(title: "시작하기")
+        view.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
         return view
        
     }()
+    override func viewWillLayoutSubviews() {
+           super.viewWillLayoutSubviews()
+           startButton.layoutIfNeeded()
+           startButton.layer.cornerRadius = startButton.frame.height / 2
+       }
     override func configureHierarchy() {
         view.addSubview(logoImageView)
         view.addSubview(onboardingImageView)
@@ -63,6 +69,10 @@ final class OnboardingViewController: BaseViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(50)
         }
+    }
+    @objc func startButtonClicked() {
+        let vc = ProfileSettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 #if DEBUG
