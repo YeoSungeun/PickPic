@@ -31,6 +31,7 @@ final class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         viewModel.inputScreenWidth.value = UIScreen.main.bounds.width
         super.viewDidLoad()
+        print(#function,"detailviewcontroller ")
         bindData()
     }
     override func configureHierarchy() {
@@ -67,16 +68,12 @@ final class DetailViewController: BaseViewController {
     }
     override func configureView() {
         super.configureView()
+        super.setNavBackButton()
         imageView.backgroundColor = Constant.Color.lightGray
-      
-        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonClicked))
-        backButton.tintColor = Constant.Color.black
-        navigationItem.leftBarButtonItem = backButton
+
         topInfoView.likedButton.addTarget(self, action: #selector(likedButtonClicked), for: .touchUpInside)
     }
-    @objc func backButtonClicked() {
-        navigationController?.popViewController(animated: true)
-    }
+
     @objc func likedButtonClicked() {
         viewModel.inputLikedButtonClicked.value = ()
     }

@@ -49,9 +49,11 @@ final class TopicViewController: BaseViewController {
     private var list: [[Photo]] = [[],[],[]]
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(#function,"TopicViewController")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.sizeToFit()
         navigationItem.largeTitleDisplayMode = .always
+        
     }
     
     override func viewDidLoad() {

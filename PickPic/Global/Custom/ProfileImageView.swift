@@ -18,7 +18,7 @@ final class ProfileImageView: BaseView {
         view.clipsToBounds = true
         return view
     }()
-    private let cameraView = {
+    let cameraView = {
         let view = UIView()
         view.clipsToBounds = true
         return view
@@ -33,7 +33,7 @@ final class ProfileImageView: BaseView {
     init(title: String, type: ProfileImageType) {
         super.init(frame: .zero)
         print(#function,"titleInit")
-        configureCell(title: title, type: type)
+        configureButton(title: title, type: type)
     }
     override func configureHierarchy() {
         addSubview(profileView)
@@ -55,17 +55,16 @@ final class ProfileImageView: BaseView {
             make.height.equalTo(cameraView.snp.width)
         }
         cameraImageView.snp.makeConstraints { make in
-            make.edges.equalTo(cameraView.safeAreaLayoutGuide).inset(8)
+            make.edges.equalTo(cameraView.safeAreaLayoutGuide).inset(2)
         }
         
     }
     override func configureView() {
         super.configureView()
-        profileView.backgroundColor = .yellow
         cameraView.backgroundColor = Constant.Color.blue
         cameraImageView.tintColor = Constant.Color.white
     }
-    func configureCell(title: String, type: ProfileImageType) {
+    func configureButton(title: String, type: ProfileImageType) {
         imageButton.setImage(UIImage(named: title), for: .normal)
         switch type {
         case .setting:
