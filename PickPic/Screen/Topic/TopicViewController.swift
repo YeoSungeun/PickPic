@@ -47,13 +47,17 @@ final class TopicViewController: BaseViewController {
     }()
     private var dataSource: UICollectionViewDiffableDataSource<TopicId, Photo>!
     private var list: [[Photo]] = [[],[],[]]
+    
+    var repository = UserInfoRepository()
+    lazy var profileImageName = repository.fetchUserInfo()?.profileImageName ?? "profile_4" 
+    lazy var profileButton = UIBarButtonItem(customView: ProfileImageView(title: profileImageName, type: .selected))
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print(#function,"TopicViewController")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.sizeToFit()
         navigationItem.largeTitleDisplayMode = .always
-        
     }
     
     override func viewDidLoad() {
@@ -62,7 +66,15 @@ final class TopicViewController: BaseViewController {
         fetchData()
         configureDataSource()
         updateSnapshot()
+        guard let view = profileButton.customView as? ProfileImageView else { return }
+        view.configureButton(title: profileImageName, type: .selected)
 
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        guard let view = profileButton.customView as? ProfileImageView else { return }
+        view.imageButton.layoutIfNeeded()
+        view.imageButton.layer.cornerRadius = view.imageButton.frame.height / 2
     }
     override func configureHierarchy() {
         print(#function,"TopicViewController")
@@ -78,15 +90,23 @@ final class TopicViewController: BaseViewController {
         super.configureView()
         print(#function,"TopicViewController")
         navigationItem.title = "OUR TOPIC"
-        
-        let profileButton = UIBarButtonItem(customView: TestView())
         navigationItem.rightBarButtonItem = profileButton
-        guard let view = profileButton.customView as? TestView else { return }
-        view.button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+        
+        guard let view = profileButton.customView as? ProfileImageView else { return }
+        view.imageButton.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+
+        navigationItem.rightBarButtonItem = profileButton
     }
     
     @objc func buttonClicked() {
         print("클릭ㅃ!")
+        let vc = ProfileSettingViewController()
+        vc.viewModel.inputViewType.value = .edit
+        vc.viewModel.inputClosure.value = { [weak self] value in
+            guard let view = self?.profileButton.customView as? ProfileImageView else { return }
+            view.configureButton(title: value, type: .selected)
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
     private func fetchData() {
         NetworkManager.shared.apiRequest(api: .topic(topicId: TopicId.goldenHour.id), model: [Photo].self) { value, error in

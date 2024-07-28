@@ -65,6 +65,7 @@ final class ProfileImageView: BaseView {
         cameraImageView.tintColor = Constant.Color.white
     }
     func configureButton(title: String, type: ProfileImageType) {
+        print("=================버튼수정됨???")
         imageButton.setImage(UIImage(named: title), for: .normal)
         switch type {
         case .setting:

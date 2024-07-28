@@ -8,6 +8,7 @@
 import UIKit
 
 class ProfileSettingViewController: BaseViewController {
+   
     private lazy var profileImageView = {
         let view = ProfileImageView(title: "", type: .setting)
         view.imageButton.addTarget(self, action: #selector(profileImageClicked), for: .touchUpInside)
@@ -174,6 +175,9 @@ class ProfileSettingViewController: BaseViewController {
     
 }
 extension ProfileSettingViewController {
+    
+   
+
     func bindData() {
         viewModel.outputViewType.bind {[weak self] viewtype in
             if viewtype == .setting {

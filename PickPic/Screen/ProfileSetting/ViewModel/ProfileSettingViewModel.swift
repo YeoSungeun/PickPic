@@ -33,6 +33,7 @@ final class ProfileSettingViewModel {
     var inputDoneButtonClicked: Observable<Void?> = Observable(nil)
     var inputSaveButtonsClicked: Observable<Void?> = Observable(nil)
     var inputWithdraButtonClicked: Observable<Void?> = Observable(nil)
+    var inputClosure: Observable<((String) -> Void)?> = Observable(nil)
     
     var outputViewType: Observable<ViewType?> = Observable(nil)
     var outputProfileName = Observable("profile_0")
@@ -82,14 +83,17 @@ final class ProfileSettingViewModel {
         }
         inputDoneButtonClicked.bindLater { [weak self] _ in
             self?.saveUserInfo()
-            
         }
         inputSaveButtonsClicked.bindLater { [weak self] _ in
             self?.saveUserInfo()
         }
+        inputSaveButtonsClicked.bind { [weak self] _ in
+            self?.inputClosure.value?(self?.outputProfileName.value ?? "profile_0")
+        }
         inputWithdraButtonClicked.bindLater { [weak self] _ in
             self?.withdrawUser()
         }
+        
     }
 }
 // 초기설정
