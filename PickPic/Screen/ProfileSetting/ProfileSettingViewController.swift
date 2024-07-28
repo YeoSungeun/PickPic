@@ -112,7 +112,7 @@ class ProfileSettingViewController: BaseViewController {
             make.height.equalTo(50)
         }
         withdrawButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(32)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(120)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(40)
         }
@@ -220,13 +220,17 @@ extension ProfileSettingViewController {
             self?.validStatusLabel.text = value
         }
         viewModel.outputList.bind { [weak self] _ in
+            print("=====outputList======")
             self?.mbtiCollectionView.reloadData()
         }
         viewModel.outputDoneButtonStatus.bind { value in
+            print("==========outputDoneButtonStatus============",value)
             if value {
                 self.doneButton.setEnabledOkaybutton(title: "완료")
+                self.saveButton.isEnabled = true
             } else {
                 self.doneButton.setDisabledOkaybutton(title: "완료")
+                self.saveButton.isEnabled = false
             }
         }
     }

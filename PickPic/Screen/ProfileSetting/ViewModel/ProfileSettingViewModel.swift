@@ -53,6 +53,7 @@ final class ProfileSettingViewModel {
                 self?.setSetting()
             } else if type == .edit {
                 self?.setEdit()
+                
             }
         }
         inputProfileClicked.bind { [weak self] _ in
@@ -69,6 +70,7 @@ final class ProfileSettingViewModel {
             self?.getDoneButtonValid()
         }
         inputMBTIButtonIndex.bind { [weak self] value in
+            print("=====buttonclickedIndex!!")
             guard let value else { return }
             self?.checkMBTIStatus(index: value)
         }
@@ -81,13 +83,11 @@ final class ProfileSettingViewModel {
             self?.getDoneButtonValid()
             
         }
-        inputDoneButtonClicked.bindLater { [weak self] _ in
-            self?.saveUserInfo()
-        }
-        inputSaveButtonsClicked.bindLater { [weak self] _ in
+        inputDoneButtonClicked.bind { [weak self] _ in
             self?.saveUserInfo()
         }
         inputSaveButtonsClicked.bind { [weak self] _ in
+            self?.saveUserInfo()
             self?.inputClosure.value?(self?.outputProfileName.value ?? "profile_0")
         }
         inputWithdraButtonClicked.bindLater { [weak self] _ in
@@ -109,7 +109,7 @@ extension ProfileSettingViewModel {
         outputViewType.value = .edit
         guard let userInfo = repository.fetchUserInfo() else { return }
         outputProfileName.value = userInfo.profileImageName ?? ""
-        outputNickName.value = userInfo.nickname
+        inputNickname.value = userInfo.nickname
         makeMBTIInfoList()
     }
 }
@@ -168,6 +168,7 @@ extension ProfileSettingViewModel {
             list.append(MBTIInfo(mbti: mbtiList[i], isClicked: mbtiStatusList[i]))
         }
         outputList.value = list
+        print(list,"=========MBTIInfo 받기!!!!===========")
     }
     func checkMBTIStatus(index: Int) {
         let mbti = MBTI(rawValue: index)
@@ -194,24 +195,31 @@ extension ProfileSettingViewModel {
     }
     // TODO: 값 바뀌나 확인..
     func changeMBTIValue(clicked: Int, unclicked: Int, mbtiStatusIndex: Int) {
-        let first = outputList.value?[clicked].isClicked
-        let second = outputList.value?[unclicked].isClicked
+//        let first = outputList.value?[clicked].isClicked
+//        let second = outputList.value?[unclicked].isClicked
+
         
-        if first == second {
-            outputList.value?[clicked].isClicked.toggle()
-            inputMBTIStatus.value[mbtiStatusIndex].toggle()
-        } else {
-            outputList.value?[clicked].isClicked.toggle()
-            if second == true {
-                outputList.value?[unclicked].isClicked.toggle()
-            } else {
-                inputMBTIStatus.value[mbtiStatusIndex].toggle()
+        if (outputList.value?[clicked].isClicked) == outputList.value?[unclicked].isClicked {
+            outputList.value?[clicked].isClicked = true
+            outputList.value?[unclicked].isClicked = false
+            inputMBTIStatus.value[mbtiStatusIndex] = true
+        } else { // ox xo
+            //xo
+            if outputList.value?[unclicked].isClicked == true {
+                outputList.value?[unclicked].isClicked = false
+                outputList.value?[clicked].isClicked = true
+                inputMBTIStatus.value[mbtiStatusIndex] = true
+            } else { // ox
+                outputList.value?[clicked].isClicked = false
+                inputMBTIStatus.value[mbtiStatusIndex] = false
             }
         }
+        print("=====AFTER!!!!changeMBTIValue=\(outputList.value?[clicked].isClicked)=\(outputList.value?[unclicked].isClicked)=\(inputMBTIStatus.value[mbtiStatusIndex])")
     }
 }
 extension ProfileSettingViewModel {
     func getDoneButtonValid() {
+        print(#function)
         if self.outputMBTIStatus.value && self.outputNicknameValid.value {
             self.outputDoneButtonStatus.value = true
         } else {
@@ -221,6 +229,7 @@ extension ProfileSettingViewModel {
 
     func saveUserInfo() {
         guard let mbtiList = outputList.value else { return }
+        print("======mbtiList=-=====", mbtiList)
         repository.modifyProfile(nickname: outputNickName.value, profileImageName: outputProfileName.value,
                                  E: mbtiList[0].isClicked, S: mbtiList[1].isClicked, T: mbtiList[2].isClicked, J: mbtiList[3].isClicked, I: mbtiList[4].isClicked, N: mbtiList[5].isClicked, F: mbtiList[6].isClicked, P: mbtiList[7].isClicked)
     }

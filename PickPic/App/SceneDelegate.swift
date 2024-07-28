@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         //TODO: 지우기
-//        repository.withDrawUser()
+        repository.withDrawUser()
         repository.getFileURL()
         
         if repository.isUser() {

@@ -32,7 +32,9 @@ final class UserInfoRepository {
                                      "E": E, "S": S, "T": T, "J": J, "I": I, "N": N, "F": F, "P": P],
                              update: .modified)
             }
+            print("수정성공~~~~!!!")
         } catch {
+            print("수정실패~~~!!!")
             print("realm modify error")
         }
     }

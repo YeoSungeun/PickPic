@@ -12,18 +12,15 @@ final class Observable<T> {
     
     var value: T {
         didSet {
-            print(self.value,"Observable value did Set")
             closure?(value)
         }
     }
     
     init(_ value: T) {
-        print(value,"Observable init")
         self.value = value
     }
     
     func bind(closure: @escaping (T) -> Void) {
-        print(self.value,"Observable closure")
         closure(value)
         self.closure = closure
     }

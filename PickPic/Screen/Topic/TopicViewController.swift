@@ -106,7 +106,8 @@ final class TopicViewController: BaseViewController {
             guard let view = self?.profileButton.customView as? ProfileImageView else { return }
             view.configureButton(title: value, type: .selected)
         }
-        navigationController?.pushViewController(vc, animated: true)
+        vc.viewModel.outputDoneButtonStatus.value = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     private func fetchData() {
         NetworkManager.shared.apiRequest(api: .topic(topicId: TopicId.goldenHour.id), model: [Photo].self) { value, error in
