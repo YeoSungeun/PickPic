@@ -235,6 +235,9 @@ extension ProfileSettingViewModel {
     }
     func withdrawUser() {
         repository.withDrawUser()
+        //????
+        let user = UserInfo(id: "userID", E: false, S: false, T: false, J: false, I: false, N: false, F: false, P: false)
+        repository.createUserInfo(user)
     }
 }
 

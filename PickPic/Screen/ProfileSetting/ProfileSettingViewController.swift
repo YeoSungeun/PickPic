@@ -58,7 +58,7 @@ class ProfileSettingViewController: BaseViewController {
     private lazy var withdrawButton = {
         let view = UIButton()
         view.setTitle("회원탈퇴", for: .normal)
-        view.tintColor = Constant.Color.blue
+        view.setTitleColor(Constant.Color.blue, for: .normal)
         view.addTarget(self, action: #selector(withdrawButtonClicked), for: .touchUpInside)
         return view
     }()
@@ -111,16 +111,13 @@ class ProfileSettingViewController: BaseViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(50)
         }
-        withdrawButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(120)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
-            make.height.equalTo(40)
-        }
+
         mbtiCollectionView.snp.makeConstraints { make in
             make.top.equalTo(underlineView.snp.bottom).offset(50)
             make.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
             make.width.equalTo((UIScreen.main.bounds.width*3)/4.0)
         }
+
         titleView.snp.makeConstraints { make in
             make.top.equalTo(underlineView.snp.bottom).offset(50)
             make.leading.bottom.equalTo(view.safeAreaLayoutGuide)
@@ -132,6 +129,11 @@ class ProfileSettingViewController: BaseViewController {
         validStatusLabel.snp.makeConstraints { make in
             make.top.equalTo(underlineView.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(36)
+            make.height.equalTo(40)
+        }
+        withdrawButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(40)
         }
         
@@ -160,7 +162,8 @@ class ProfileSettingViewController: BaseViewController {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelgate = windowScene?.delegate as? SceneDelegate
         let vc = OnboardingViewController()
-        sceneDelgate?.window?.rootViewController = vc
+        let nav = UINavigationController(rootViewController: vc)
+        sceneDelgate?.window?.rootViewController = nav
         sceneDelgate?.window?.makeKeyAndVisible()
     }
     private func setLayout() -> UICollectionViewLayout {
