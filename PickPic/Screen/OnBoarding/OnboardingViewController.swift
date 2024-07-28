@@ -72,6 +72,7 @@ final class OnboardingViewController: BaseViewController {
     }
     @objc func startButtonClicked() {
         let vc = ProfileSettingViewController()
+        vc.viewModel.inputViewType.value = .setting
         navigationController?.pushViewController(vc, animated: true)
     }
 }

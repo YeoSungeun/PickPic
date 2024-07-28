@@ -12,7 +12,7 @@ struct MBTIInfo {
     var isClicked: Bool
 }
 
-enum MBTI: CaseIterable {
+enum MBTI: Int, CaseIterable {
     case E
     case S
     case T
@@ -21,4 +21,25 @@ enum MBTI: CaseIterable {
     case N
     case F
     case P
+    
+    var mbtiString: String {
+        switch self {
+        case .E:
+            "E"
+        case .S:
+            "S"
+        case .T:
+            "T"
+        case .J:
+            "J"
+        case .I:
+            "I"
+        case .N:
+            "N"
+        case .F:
+            "F"
+        case .P:
+            "P"
+        }
+    }
 }

@@ -8,14 +8,16 @@
 import UIKit
 
 class ProfileSettingViewController: BaseViewController {
-    private let profileImageView = {
+    private lazy var profileImageView = {
         let view = ProfileImageView(title: "", type: .setting)
+        view.imageButton.addTarget(self, action: #selector(profileImageClicked), for: .touchUpInside)
         return view
     }()
-    private let nicknameTextField = {
+    private lazy var nicknameTextField = {
         let view = UITextField()
         view.placeholder = "닉네임을 입력해주세요 :)"
         view.font = Constant.Font.regular14
+        view.delegate = self
         return view
     }()
     private let underlineView = {
@@ -52,6 +54,17 @@ class ProfileSettingViewController: BaseViewController {
         view.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         return view
     }()
+    private lazy var withdrawButton = {
+        let view = UIButton()
+        view.setTitle("회원탈퇴", for: .normal)
+        view.tintColor = Constant.Color.blue
+        view.addTarget(self, action: #selector(withdrawButtonClicked), for: .touchUpInside)
+        return view
+    }()
+    private lazy var saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
+    
+    let viewModel = ProfileSettingViewModel()
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         profileImageView.imageButton.layoutIfNeeded()
@@ -63,16 +76,18 @@ class ProfileSettingViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindData()
     }
     override func configureHierarchy() {
         view.addSubview(profileImageView)
         view.addSubview(nicknameTextField)
         view.addSubview(underlineView)
-        view.addSubview(validStatusLabel)
         view.addSubview(titleView)
         titleView.addSubview(titleLabel)
         view.addSubview(mbtiCollectionView)
+        view.addSubview(validStatusLabel)
         view.addSubview(doneButton)
+        view.addSubview(withdrawButton)
     }
     override func configureLayout() {
         profileImageView.snp.makeConstraints { make in
@@ -89,41 +104,63 @@ class ProfileSettingViewController: BaseViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(32)
             make.height.equalTo(1)
         }
-        validStatusLabel.snp.makeConstraints { make in
-            make.top.equalTo(underlineView.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(36)
-            make.height.equalTo(40)
-        } 
+        
         doneButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(32)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(50)
         }
+        withdrawButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(32)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.height.equalTo(40)
+        }
         mbtiCollectionView.snp.makeConstraints { make in
             make.top.equalTo(underlineView.snp.bottom).offset(50)
-            make.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
             make.width.equalTo((UIScreen.main.bounds.width*3)/4.0)
-            make.bottom.equalTo(doneButton.snp.top)
         }
         titleView.snp.makeConstraints { make in
             make.top.equalTo(underlineView.snp.bottom).offset(50)
-            make.leading.equalTo(view.safeAreaLayoutGuide)
+            make.leading.bottom.equalTo(view.safeAreaLayoutGuide)
             make.trailing.equalTo(mbtiCollectionView.snp.leading)
-            make.bottom.equalTo(doneButton.snp.top)
         }
         titleLabel.snp.makeConstraints { make in
             make.top.leading.equalTo(titleView.safeAreaLayoutGuide).offset(24)
         }
-       
+        validStatusLabel.snp.makeConstraints { make in
+            make.top.equalTo(underlineView.snp.bottom).offset(8)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(36)
+            make.height.equalTo(40)
+        }
+        
     }
     override func configureView() {
         super.configureView()
         super.setNavBackButton()
-        mbtiCollectionView.backgroundColor = .yellow
-        titleView.backgroundColor = .blue
+    }
+    @objc func profileImageClicked() {
+        viewModel.inputProfileClicked.value = ()
     }
     @objc func doneButtonClicked() {
-        // input 완료버튼트리거
+        viewModel.inputDoneButtonClicked.value = ()
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelgate = windowScene?.delegate as? SceneDelegate
+        let vc = MainTabBarController()
+        sceneDelgate?.window?.rootViewController = vc
+        sceneDelgate?.window?.makeKeyAndVisible()
+    }
+    @objc func saveButtonClicked() {
+        viewModel.inputSaveButtonsClicked.value = ()
+        navigationController?.popViewController(animated: true)
+    }
+    @objc func withdrawButtonClicked() {
+        viewModel.inputWithdraButtonClicked.value = ()
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelgate = windowScene?.delegate as? SceneDelegate
+        let vc = OnboardingViewController()
+        sceneDelgate?.window?.rootViewController = vc
+        sceneDelgate?.window?.makeKeyAndVisible()
     }
     private func setLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -134,18 +171,83 @@ class ProfileSettingViewController: BaseViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right:20)
         return layout
     }
-
+    
+}
+extension ProfileSettingViewController {
+    func bindData() {
+        viewModel.outputViewType.bind {[weak self] viewtype in
+            if viewtype == .setting {
+                self?.doneButton.isHidden = false
+                self?.withdrawButton.isHidden = true
+                self?.navigationItem.rightBarButtonItem = nil
+            } else if viewtype == .edit {
+                self?.doneButton.isHidden = true
+                self?.withdrawButton.isHidden = false
+                self?.navigationItem.rightBarButtonItem = self?.saveButton
+            }
+        }
+        viewModel.outputProfileName.bind { [weak self] value in
+            self?.profileImageView.configureButton(title: value, type: .setting)
+        }
+        // TODO: 되나??
+        viewModel.outputVC.bindLater { [weak self] value in
+            guard let vc = value else { return }
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        viewModel.outputNickName.bind { [weak self] value in
+            // edit일 때 가져온는 닉네임!
+            // textfield.text로 값 보내주면 textFieldDidChangeSelection실행되는지 확인
+            guard let value = value, !value.isEmpty else {
+                self?.validStatusLabel.isHidden = true
+                return
+            }
+            self?.validStatusLabel.isHidden = false
+            self?.nicknameTextField.text = value
+            
+        }
+        viewModel.outputNicknameValid.bind { [weak self] value in
+            if value {
+                self?.validStatusLabel.textColor = Constant.Color.blue
+            } else {
+                self?.validStatusLabel.textColor = Constant.Color.warning
+            }
+        }
+        viewModel.outputNicknameValidComent.bind { [weak self] value in
+            self?.validStatusLabel.text = value
+        }
+        viewModel.outputList.bind { [weak self] _ in
+            self?.mbtiCollectionView.reloadData()
+        }
+        viewModel.outputDoneButtonStatus.bind { value in
+            if value {
+                self.doneButton.setEnabledOkaybutton(title: "완료")
+            } else {
+                self.doneButton.setDisabledOkaybutton(title: "완료")
+            }
+        }
+    }
+}
+extension ProfileSettingViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        viewModel.inputNickname.value = nicknameTextField.text
+    }
 }
 
 extension ProfileSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // output mbti list
-        return 8
+        return viewModel.outputList.value?.count ?? 8
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MBTICollectionViewCell.id, for: indexPath) as? MBTICollectionViewCell else { return UICollectionViewCell() }
+        guard let list = viewModel.outputList.value else { return UICollectionViewCell()}
+        let data = list[indexPath.row]
+        cell.configureCell(data: data)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.inputMBTIButtonIndex.value = indexPath.item
     }
     
 }

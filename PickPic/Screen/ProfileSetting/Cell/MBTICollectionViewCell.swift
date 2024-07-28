@@ -36,9 +36,20 @@ class MBTICollectionViewCell: BaseCollectionViewCell {
     }
     override func configureView() {
         super.configureView()
+        mbtiButton.layer.cornerRadius = contentView.frame.height/2
     }
-    func configureCell( ) {
-        
+    func configureCell(data: MBTIInfo) {
+        mbtiLabel.text = data.mbti.mbtiString
+        if data.isClicked {
+            mbtiButton.layer.borderColor = Constant.Color.blue.cgColor
+            mbtiButton.backgroundColor = Constant.Color.blue
+            mbtiLabel.textColor = Constant.Color.white
+        } else {
+            mbtiButton.layer.borderColor = Constant.Color.gray.cgColor
+            mbtiButton.layer.borderWidth = 1
+            mbtiButton.backgroundColor = Constant.Color.white
+            mbtiLabel.textColor = Constant.Color.gray
+        }
     }
 
 }
