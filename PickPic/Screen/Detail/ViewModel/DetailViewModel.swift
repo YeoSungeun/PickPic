@@ -31,7 +31,6 @@ final class DetailViewModel {
     var outputUserProfileImage: Observable<String?> = Observable(nil)
     var outputAlert: Observable<Void?> = Observable(nil)
     
-    
     let repository = LikedItemRepository()
     
     init() {

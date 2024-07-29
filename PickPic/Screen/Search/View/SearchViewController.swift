@@ -148,7 +148,9 @@ final class SearchViewController: BaseViewController {
     private func searchRequest(query: String, sort: SearchSort) {
         NetworkManager.shared.apiRequest(api: .search(query: query, page: page, sort: sort), model: SearchResult.self) { value, error in
             if let error = error {
-                print("error")
+                self.showAlert(title: "데이터를 불러오는데 실패했습니다.", message: "", ok: "확인") {
+                    print("error")
+                }
             }
             guard let value = value else {
                 print("error nil, value nil")

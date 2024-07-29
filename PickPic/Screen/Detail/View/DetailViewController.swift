@@ -73,7 +73,6 @@ final class DetailViewController: BaseViewController {
 
         topInfoView.likedButton.addTarget(self, action: #selector(likedButtonClicked), for: .touchUpInside)
     }
-
     @objc func likedButtonClicked() {
         viewModel.inputLikedButtonClicked.value = ()
     }
