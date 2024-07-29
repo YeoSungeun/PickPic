@@ -22,8 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let vc = MainTabBarController()
             window?.rootViewController = vc
         } else {
-            let user = UserInfo(id: "userID", E: false, S: false, T: false, J: false, I: false, N: false, F: false, P: false)
-            repository.createUserInfo(user)
             let vc = OnboardingViewController()
             let nav = UINavigationController(rootViewController: vc)
             self.window?.rootViewController = nav

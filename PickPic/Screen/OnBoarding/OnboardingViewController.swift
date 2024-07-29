@@ -37,6 +37,7 @@ final class OnboardingViewController: BaseViewController {
         return view
        
     }()
+    let repository = UserInfoRepository()
     override func viewWillLayoutSubviews() {
            super.viewWillLayoutSubviews()
            startButton.layoutIfNeeded()
@@ -71,6 +72,8 @@ final class OnboardingViewController: BaseViewController {
         }
     }
     @objc func startButtonClicked() {
+        let user = UserInfo(id: "userID", E: false, S: false, T: false, J: false, I: false, N: false, F: false, P: false)
+        repository.createUserInfo(user)
         let vc = ProfileSettingViewController()
         vc.viewModel.inputViewType.value = .setting
         navigationController?.pushViewController(vc, animated: true)
