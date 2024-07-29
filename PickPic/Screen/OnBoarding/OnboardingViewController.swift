@@ -50,9 +50,9 @@ final class OnboardingViewController: BaseViewController {
     }
     override func configureLayout() {
         logoImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(80)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(60)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
-            make.height.equalTo(logoImageView.snp.width).multipliedBy(241/884)
+            make.height.equalTo(logoImageView.snp.width).multipliedBy(0.28)
         }
         onboardingImageView.snp.makeConstraints { make in
             make.top.equalTo(logoImageView.snp.bottom).offset(40)

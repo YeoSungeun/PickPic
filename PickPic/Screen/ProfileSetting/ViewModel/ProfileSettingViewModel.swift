@@ -114,7 +114,8 @@ extension ProfileSettingViewModel {
         guard let userInfo = repository.fetchUserInfo() else { return }
         outputProfileName.value = userInfo.profileImageName ?? ""
         inputNickname.value = userInfo.nickname
-        outputMBTIStatus.value = true
+//        outputMBTIStatus.value = true
+        inputMBTIStatus.value = [true, true, true, true]
         makeMBTIInfoList()
     }
 }
@@ -122,7 +123,6 @@ extension ProfileSettingViewModel {
 extension ProfileSettingViewModel {
     func getNicknameStatus(nickname: String?) {
         guard let nickname = nickname else { return }
-        
         do {
             let result = try vaildNickname(text: nickname)
             outputNicknameValidComent.value = "사용할 수 있는 닉네임이에요"
