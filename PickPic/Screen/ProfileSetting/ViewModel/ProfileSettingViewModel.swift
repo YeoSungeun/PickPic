@@ -70,7 +70,6 @@ final class ProfileSettingViewModel {
             self?.getDoneButtonValid()
         }
         inputMBTIButtonIndex.bind { [weak self] value in
-            print("=====buttonclickedIndex!!")
             guard let value else { return }
             self?.checkMBTIStatus(index: value)
         }
@@ -81,7 +80,6 @@ final class ProfileSettingViewModel {
                 self?.outputMBTIStatus.value = false
             }
             self?.getDoneButtonValid()
-            
         }
         inputDoneButtonClicked.bind { [weak self] _ in
             self?.saveUserInfo()
@@ -92,6 +90,12 @@ final class ProfileSettingViewModel {
         }
         inputWithdraButtonClicked.bindLater { [weak self] _ in
             self?.withdrawUser()
+        }
+        outputNicknameValid.bind { [weak self] value in
+            self?.getDoneButtonValid()
+        }
+        outputMBTIStatus.bind { [weak self] value in
+            self?.getDoneButtonValid()
         }
         
     }
@@ -110,6 +114,7 @@ extension ProfileSettingViewModel {
         guard let userInfo = repository.fetchUserInfo() else { return }
         outputProfileName.value = userInfo.profileImageName ?? ""
         inputNickname.value = userInfo.nickname
+        outputMBTIStatus.value = true
         makeMBTIInfoList()
     }
 }
@@ -143,7 +148,7 @@ extension ProfileSettingViewModel {
         var specialCharSet: CharacterSet = CharacterSet()
         specialCharSet.insert(charactersIn: "@#$%")
         
-        guard text.count > 2 && text.count <= 9 else {
+        guard text.count >= 2 && text.count <= 9 else {
             print("글자 수")
             throw VaildationError.textCountCondition
         }
@@ -195,10 +200,7 @@ extension ProfileSettingViewModel {
     }
     // TODO: 값 바뀌나 확인..
     func changeMBTIValue(clicked: Int, unclicked: Int, mbtiStatusIndex: Int) {
-//        let first = outputList.value?[clicked].isClicked
-//        let second = outputList.value?[unclicked].isClicked
-
-        
+        print(#function)
         if (outputList.value?[clicked].isClicked) == outputList.value?[unclicked].isClicked {
             outputList.value?[clicked].isClicked = true
             outputList.value?[unclicked].isClicked = false
@@ -214,17 +216,20 @@ extension ProfileSettingViewModel {
                 inputMBTIStatus.value[mbtiStatusIndex] = false
             }
         }
-        print("=====AFTER!!!!changeMBTIValue=\(outputList.value?[clicked].isClicked)=\(outputList.value?[unclicked].isClicked)=\(inputMBTIStatus.value[mbtiStatusIndex])")
+        print("=====AFTER!!!!changeMBTIValue=\(outputList.value?[clicked].isClicked)=\(outputList.value?[unclicked].isClicked)=\(inputMBTIStatus.value[mbtiStatusIndex])=\(outputMBTIStatus.value)")
+        getDoneButtonValid()
     }
 }
 extension ProfileSettingViewModel {
     func getDoneButtonValid() {
         print(#function)
+        print("Before==nickname",self.outputNicknameValid.value,"mbti",self.outputMBTIStatus.value, "done",self.outputDoneButtonStatus.value)
         if self.outputMBTIStatus.value && self.outputNicknameValid.value {
             self.outputDoneButtonStatus.value = true
         } else {
             self.outputDoneButtonStatus.value = false
         }
+        print("After === nickname",self.outputNicknameValid.value,"mbti",self.outputMBTIStatus.value, "done",self.outputDoneButtonStatus.value)
     }
 
     func saveUserInfo() {

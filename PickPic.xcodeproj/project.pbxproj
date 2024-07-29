@@ -26,6 +26,7 @@
 		A0232E042C54FF96009CFA43 /* MBTICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232E032C54FF96009CFA43 /* MBTICollectionViewCell.swift */; };
 		A0232E062C551D43009CFA43 /* MBTIInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232E052C551D43009CFA43 /* MBTIInfo.swift */; };
 		A0232E082C5520A7009CFA43 /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232E072C5520A7009CFA43 /* UserInfoRepository.swift */; };
+		A08EE4F42C576E9F0068C9BE /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EAF22C51ADC5006C3CC6 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A096BE122C4E4E4600F6026D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE112C4E4E4600F6026D /* AppDelegate.swift */; };
 		A096BE142C4E4E4600F6026D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A096BE132C4E4E4600F6026D /* SceneDelegate.swift */; };
 		A096BE1B2C4E4E4800F6026D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A096BE1A2C4E4E4800F6026D /* Assets.xcassets */; };
@@ -64,6 +65,20 @@
 		A0D1EB1D2C535B8A006C3CC6 /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB1C2C535B8A006C3CC6 /* TopicCollectionViewCell.swift */; };
 		A0D1EB1F2C535D2E006C3CC6 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB1E2C535D2E006C3CC6 /* TitleSupplementaryView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A08EE4F52C576E9F0068C9BE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A08EE4F42C576E9F0068C9BE /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A0232DD92C537A89009CFA43 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -486,6 +501,7 @@
 				A096BE0A2C4E4E4600F6026D /* Sources */,
 				A096BE0B2C4E4E4600F6026D /* Frameworks */,
 				A096BE0C2C4E4E4600F6026D /* Resources */,
+				A08EE4F52C576E9F0068C9BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -755,6 +771,7 @@
 				DEVELOPMENT_TEAM = HP4XA8YZN3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PickPic/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "여성은";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -786,6 +803,7 @@
 				DEVELOPMENT_TEAM = HP4XA8YZN3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PickPic/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "여성은";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
