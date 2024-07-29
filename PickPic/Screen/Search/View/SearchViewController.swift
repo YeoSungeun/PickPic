@@ -207,6 +207,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchRequest(query: text, sort: .relevant)
         sortButton.configuration = .sortButtonStyle(title: SearchSort.relevant.sortString)
         query = text
+        view.endEditing(true)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let text = searchBar.text, text.isEmpty {
