@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIButton.Configuration {
-    //TODO: extension에서 빼기?
+  
     static func sortButtonStyle(title: String) -> UIButton.Configuration {
         var configuration = UIButton.Configuration.filled()
         configuration.title = title

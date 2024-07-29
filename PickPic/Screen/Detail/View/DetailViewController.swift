@@ -120,9 +120,3 @@ extension DetailViewModel {
 
 }
 
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    DetailViewController()
-}
-#endif

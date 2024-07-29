@@ -76,9 +76,3 @@ final class OnboardingViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    OnboardingViewController()
-}
-#endif

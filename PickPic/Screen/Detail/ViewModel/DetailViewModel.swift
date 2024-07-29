@@ -34,7 +34,6 @@ final class DetailViewModel {
     let repository = LikedItemRepository()
     
     init() {
-        print("========DetailViewModel Init========")
         inputPhoto.bind { [weak self] value in
             self?.getDetailPhoto(data: value)
         }
@@ -48,9 +47,7 @@ final class DetailViewModel {
             self?.calculateHeight(width: self?.outputSize.value.width ?? 0, height: self?.outputSize.value.height ?? 0)
         }
     }
-    deinit {
-        print("========DetailViewModel Deinit========")
-    }
+
     func getDetailPhoto(data: Photo?) {
         guard let photo = data else { return }
         photoType = .Photo
@@ -126,6 +123,5 @@ final class DetailViewModel {
     }
     func calculateHeight(width: Int, height: Int) {
         outputConstraintHeight.value = Double(inputScreenWidth.value) * Double(height) / Double(width)
-        print(Double(inputScreenWidth.value), Double(height), outputConstraintHeight.value,"!!!!!!!!!")
     }
 }

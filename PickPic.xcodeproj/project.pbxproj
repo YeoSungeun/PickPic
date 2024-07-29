@@ -12,7 +12,6 @@
 		A0232DDE2C537E48009CFA43 /* TopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DDD2C537E48009CFA43 /* TopInfoView.swift */; };
 		A0232DE02C537E7D009CFA43 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DDF2C537E7D009CFA43 /* StatisticsView.swift */; };
 		A0232DE22C53BE21009CFA43 /* PhotoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE12C53BE21009CFA43 /* PhotoDetail.swift */; };
-		A0232DE42C54027E009CFA43 /* _DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE32C54027E009CFA43 /* _DateFormatter.swift */; };
 		A0232DE62C5402A5009CFA43 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE52C5402A5009CFA43 /* String+Extension.swift */; };
 		A0232DE82C54187C009CFA43 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DE72C54187C009CFA43 /* UIViewController+Extension.swift */; };
 		A0232DEC2C542889009CFA43 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232DEB2C542889009CFA43 /* FileService.swift */; };
@@ -61,7 +60,6 @@
 		A0D1EAF82C51C2AA006C3CC6 /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EAF72C51C2AA006C3CC6 /* LikeCollectionViewCell.swift */; };
 		A0D1EB122C5250B9006C3CC6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0D1EB112C5250B9006C3CC6 /* IQKeyboardManagerSwift */; };
 		A0D1EB152C525905006C3CC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */; };
-		A0D1EB172C53214A006C3CC6 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB162C53214A006C3CC6 /* TestView.swift */; };
 		A0D1EB1D2C535B8A006C3CC6 /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB1C2C535B8A006C3CC6 /* TopicCollectionViewCell.swift */; };
 		A0D1EB1F2C535D2E006C3CC6 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EB1E2C535D2E006C3CC6 /* TitleSupplementaryView.swift */; };
 /* End PBXBuildFile section */
@@ -86,7 +84,6 @@
 		A0232DDD2C537E48009CFA43 /* TopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoView.swift; sourceTree = "<group>"; };
 		A0232DDF2C537E7D009CFA43 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		A0232DE12C53BE21009CFA43 /* PhotoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetail.swift; sourceTree = "<group>"; };
-		A0232DE32C54027E009CFA43 /* _DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _DateFormatter.swift; sourceTree = "<group>"; };
 		A0232DE52C5402A5009CFA43 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A0232DE72C54187C009CFA43 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A0232DEB2C542889009CFA43 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
@@ -131,7 +128,6 @@
 		A0D1EAF42C51AF34006C3CC6 /* LikedItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemRepository.swift; sourceTree = "<group>"; };
 		A0D1EAF72C51C2AA006C3CC6 /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0D1EB142C525905006C3CC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		A0D1EB162C53214A006C3CC6 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A0D1EB1C2C535B8A006C3CC6 /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0D1EB1E2C535D2E006C3CC6 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				A0D1EAC02C506ECF006C3CC6 /* Sort.swift */,
-				A0232DE32C54027E009CFA43 /* _DateFormatter.swift */,
 				A0232DF02C54CDDA009CFA43 /* ProfileImageType.swift */,
 				A0232DF92C54E47F009CFA43 /* ViewType.swift */,
 			);
@@ -409,7 +404,6 @@
 				A0D1EA7D2C4F67A5006C3CC6 /* BaseTableViewCell.swift */,
 				A0D1EA7F2C4F67BD006C3CC6 /* BaseCollectionViewCell.swift */,
 				A0D1EA812C4F67D8006C3CC6 /* BaseView.swift */,
-				A0D1EB162C53214A006C3CC6 /* TestView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -610,7 +604,6 @@
 				A0D1EAF82C51C2AA006C3CC6 /* LikeCollectionViewCell.swift in Sources */,
 				A0232DE82C54187C009CFA43 /* UIViewController+Extension.swift in Sources */,
 				A0D1EA822C4F67D8006C3CC6 /* BaseView.swift in Sources */,
-				A0232DE42C54027E009CFA43 /* _DateFormatter.swift in Sources */,
 				A0D1EAC12C506ECF006C3CC6 /* Sort.swift in Sources */,
 				A0D1EA7E2C4F67A5006C3CC6 /* BaseTableViewCell.swift in Sources */,
 				A0D1EB1D2C535B8A006C3CC6 /* TopicCollectionViewCell.swift in Sources */,
@@ -620,7 +613,6 @@
 				A0D1EB1F2C535D2E006C3CC6 /* TitleSupplementaryView.swift in Sources */,
 				A096BE3C2C4E9DCB00F6026D /* DetailViewController.swift in Sources */,
 				A0232DDC2C537AA5009CFA43 /* Observable.swift in Sources */,
-				A0D1EB172C53214A006C3CC6 /* TestView.swift in Sources */,
 				A0232DE22C53BE21009CFA43 /* PhotoDetail.swift in Sources */,
 				A0D1EAEB2C50E7AA006C3CC6 /* UIButton+Extension.swift in Sources */,
 				A0232E082C5520A7009CFA43 /* UserInfoRepository.swift in Sources */,

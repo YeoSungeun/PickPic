@@ -101,13 +101,16 @@ final class TopicViewController: BaseViewController {
     @objc func buttonClicked() {
         print("클릭ㅃ!")
         let vc = ProfileSettingViewController()
+        let nav = UINavigationController(rootViewController: vc)
         vc.viewModel.inputViewType.value = .edit
         vc.viewModel.inputClosure.value = { [weak self] value in
             guard let view = self?.profileButton.customView as? ProfileImageView else { return }
             view.configureButton(title: value, type: .selected)
         }
         vc.viewModel.outputDoneButtonStatus.value = true
-        self.navigationController?.pushViewController(vc, animated: true)
+//        self.navigationController?.pushViewController(vc, animated: true)
+        nav.modalPresentationStyle = .fullScreen
+        show(nav, sender: self)
     }
     private func fetchData() {
         NetworkManager.shared.apiRequest(api: .topic(topicId: TopicId.goldenHour.id), model: [Photo].self) { value, error in

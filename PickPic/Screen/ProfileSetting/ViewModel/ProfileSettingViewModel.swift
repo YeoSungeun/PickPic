@@ -46,6 +46,7 @@ final class ProfileSettingViewModel {
     var outputDoneButtonStatus = Observable(false)
     
     let repository = UserInfoRepository()
+    let likeItemRepository = LikedItemRepository()
     
     init() {
         inputViewType.bind { [weak self] type in
@@ -198,7 +199,7 @@ extension ProfileSettingViewModel {
             print("mbti error")
         }
     }
-    // TODO: 값 바뀌나 확인..
+ 
     func changeMBTIValue(clicked: Int, unclicked: Int, mbtiStatusIndex: Int) {
         print(#function)
         if (outputList.value?[clicked].isClicked) == outputList.value?[unclicked].isClicked {
@@ -239,6 +240,11 @@ extension ProfileSettingViewModel {
                                  E: mbtiList[0].isClicked, S: mbtiList[1].isClicked, T: mbtiList[2].isClicked, J: mbtiList[3].isClicked, I: mbtiList[4].isClicked, N: mbtiList[5].isClicked, F: mbtiList[6].isClicked, P: mbtiList[7].isClicked)
     }
     func withdrawUser() {
+        let idList = likeItemRepository.getPhotosId()
+        for id in idList {
+            guard let id = id else { return }
+            FileService.removeImageFromDocument(filename: id)
+        }
         repository.withDrawUser()
         //????
         let user = UserInfo(id: "userID", E: false, S: false, T: false, J: false, I: false, N: false, F: false, P: false)

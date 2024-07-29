@@ -67,9 +67,3 @@ final class TopInfoView: BaseView {
     }
 }
 
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    TopInfoView()
-}
-#endif

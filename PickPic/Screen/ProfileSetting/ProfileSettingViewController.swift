@@ -142,6 +142,13 @@ class ProfileSettingViewController: BaseViewController {
         super.configureView()
         super.setNavBackButton()
     }
+    override func backButtonClicked() {
+        if viewModel.outputViewType.value == .setting {
+            super.backButtonClicked()
+        } else if viewModel.outputViewType.value == .edit {
+            dismiss(animated: true)
+        }
+    }
     @objc func profileImageClicked() {
         viewModel.inputProfileClicked.value = ()
     }
@@ -155,7 +162,8 @@ class ProfileSettingViewController: BaseViewController {
     }
     @objc func saveButtonClicked() {
         viewModel.inputSaveButtonsClicked.value = ()
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     @objc func withdrawButtonClicked() {
         viewModel.inputWithdraButtonClicked.value = ()
@@ -196,7 +204,7 @@ extension ProfileSettingViewController {
         viewModel.outputProfileName.bind { [weak self] value in
             self?.profileImageView.configureButton(title: value, type: .setting)
         }
-        // TODO: 되나??
+
         viewModel.outputVC.bindLater { [weak self] value in
             guard let vc = value else { return }
             self?.navigationController?.pushViewController(vc, animated: true)
@@ -263,9 +271,3 @@ extension ProfileSettingViewController: UICollectionViewDelegate, UICollectionVi
     
 }
 
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    ProfileSettingViewController()
-}
-#endif

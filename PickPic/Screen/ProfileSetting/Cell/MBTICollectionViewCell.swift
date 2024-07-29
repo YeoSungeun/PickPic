@@ -54,9 +54,3 @@ class MBTICollectionViewCell: BaseCollectionViewCell {
 
 }
 
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    MBTICollectionViewCell()
-}
-#endif

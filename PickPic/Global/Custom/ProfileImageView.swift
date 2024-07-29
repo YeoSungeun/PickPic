@@ -86,9 +86,3 @@ final class ProfileImageView: BaseView {
     }
 }
 
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    ProfileImageView(title: "profile_0", type: .unselected)
-}
-#endif

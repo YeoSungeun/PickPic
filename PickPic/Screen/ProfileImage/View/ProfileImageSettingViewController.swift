@@ -92,9 +92,3 @@ extension ProfileImageSettingViewController: UICollectionViewDelegate, UICollect
     
 }
 
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    ProfileImageSettingViewController()
-}
-#endif

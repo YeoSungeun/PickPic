@@ -27,7 +27,6 @@ final class LikeViewController: BaseViewController {
     }()
     private var list: [LikedItem] = [] {
         didSet {
-            print("리스트 디드셋~!!!!!!!!!!")
             if list.count == 0 {
                 likeView.isHidden = true
                 noLikeView.isHidden = false
@@ -54,8 +53,6 @@ final class LikeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function)
-//        list = repository.getDataDesc()
-//        likeCollectionView.reloadData()
     }
     override func configureHierarchy() {
         print(#function)

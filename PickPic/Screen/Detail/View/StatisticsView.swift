@@ -94,9 +94,4 @@ final class StatisticsView: BaseView {
 }
 
 
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    StatisticsView()
-}
-#endif
+

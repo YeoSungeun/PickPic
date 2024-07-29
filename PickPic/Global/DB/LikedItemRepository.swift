@@ -51,6 +51,15 @@ final class LikedItemRepository {
             return false
         }
     }
+    func getPhotosId() -> [String?] {
+        var list: [String] = []
+        let photoList = fetchAll()
+        for photo in photoList {
+            list.append(photo.id)
+        }
+        print(list)
+        return list
+    }
     
     func fetchAll() -> [LikedItem] {
         let value = realm.objects(LikedItem.self)

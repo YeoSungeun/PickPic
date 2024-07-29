@@ -81,7 +81,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         photoImageView.kf.setImage(with: url)
         
         likesLabel.text = data.likesString
-        // TODO: 여기서 좋아요 판별해서 버튼 이미지 세팅해주기!
+       
         if repository.isLiked(id: data.id) {
             likeButton.setImage(UIImage(named: "like_circle"), for: .normal)
         } else {
@@ -91,10 +91,3 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
 }
 
 
-
-#if DEBUG
-@available (iOS 17, *)
-#Preview {
-    SearchCollectionViewCell()
-}
-#endif
